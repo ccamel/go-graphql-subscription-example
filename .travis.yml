@@ -3,7 +3,7 @@ language: go
 go_import_path: github.com/ccamel/go-graphql-subscription-example
 
 go:
-  - 1.11.2
+  - 1.12.4
 
 script:
   - go test ./... -v -race -coverprofile=coverage.txt -covermode=atomic
