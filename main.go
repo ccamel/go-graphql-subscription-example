@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import "github.com/ccamel/go-graphql-subscription-example/server"
+
+//go:generate esc -o static/static.go -pkg static static
 
 func main() {
-	fmt.Println("Hello, world !")
+	server.StartServer()
 }
