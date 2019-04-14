@@ -6,5 +6,5 @@ go:
   - 1.12.4
 
 script:
-  - go test ./... -v -race -coverprofile=coverage.txt -covermode=atomic
-  - go build .
+  - make gen-static
+  - make build
