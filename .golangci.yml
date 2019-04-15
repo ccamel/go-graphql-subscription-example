@@ -1,0 +1,19 @@
+run:
+  concurrency: 12
+  deadline: 120s
+  issues-exit-code: 1
+  tests: false
+
+output:
+  format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
+
+linters:
+  enable-all: true
+  disable:
+    - gochecknoglobals
+    - gochecknoinits
+    - lll
+  fast: false
+
