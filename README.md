@@ -2,7 +2,8 @@
 go-graphql-subscription-example  
 ===============================  
   
-[![git3moji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)  
+[![git3moji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
+[![build-status](https://travis-ci.org/ccamel/go-graphql-subscription-example.svg?branch=master)](https://travis-ci.org/ccamel/go-graphql-subscription-example)  
   
 > Project that demonstrates GraphQL [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages.  
   
