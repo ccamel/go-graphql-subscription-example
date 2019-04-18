@@ -4,9 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
-	"os"
 	"runtime"
-	"strconv"
 	"time"
 
 	"github.com/ccamel/go-graphql-subscription-example/static"
@@ -17,28 +15,15 @@ import (
 	"github.com/rs/zerolog/hlog"
 )
 
-var httpPort = 8080
-
-func init() {
-	port := os.Getenv("HTTP_PORT")
-	if port != "" {
-		var err error
-		httpPort, err = strconv.Atoi(port)
-		if err != nil {
-			panic(err)
-		}
-	}
-}
-
-func StartServer() {
+func StartServer(cfg *Configuration) {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	router := http.NewServeMux()
-	router.Handle("/graphql", withMiddleware(graphqlApp()))
-	router.Handle("/graphiql", withMiddleware(graphiqlApp()))
+	router.Handle("/graphql", withMiddleware(graphqlApp(cfg)))
+	router.Handle("/graphiql", withMiddleware(graphiqlApp(cfg)))
 
 	server := &http.Server{
-		Addr:         fmt.Sprintf(":%d", httpPort),
+		Addr:         fmt.Sprintf(":%d", cfg.Port),
 		Handler:      router,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
@@ -47,23 +32,23 @@ func StartServer() {
 
 	log.
 		Info().
-		Int("port", httpPort).
+		Uint16("port", cfg.Port).
 		Msg("Ready to handle requests")
 
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		log.
 			Error().
 			Err(err).
-			Int("port", httpPort).
+			Uint16("port", cfg.Port).
 			Msg("Could not start server")
 	}
 }
 
-func graphiqlApp() http.Handler {
+func graphiqlApp(cfg *Configuration) http.Handler {
 	t := template.Must(template.New("graphiql").Parse(static.FSMustString(false, "/static/graphiql/graphiql.html")))
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if err := t.Execute(w, httpPort); err != nil {
+		if err := t.Execute(w, cfg.Port); err != nil {
 			log.
 				Error().
 				Err(err).
@@ -73,8 +58,8 @@ func graphiqlApp() http.Handler {
 	})
 }
 
-func graphqlApp() http.Handler {
-	s := graphql.MustParseSchema(static.FSMustString(false, "/static/graphql/schema/subscription-api.graphql"), newResolver())
+func graphqlApp(cfg *Configuration) http.Handler {
+	s := graphql.MustParseSchema(static.FSMustString(false, "/static/graphql/schema/subscription-api.graphql"), NewResolver(cfg))
 
 	graphQLHandler := graphqlws.NewHandlerFunc(s, &relay.Handler{Schema: s})
 

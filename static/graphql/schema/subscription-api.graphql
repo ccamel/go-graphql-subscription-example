@@ -6,9 +6,9 @@ schema {
 }
 
 type Query {
-	foo: String
+	topics: [String!]!
 }
 
 type Subscription {
-    event(): JSONObject
+    event(topic: String!): JSONObject
 }
