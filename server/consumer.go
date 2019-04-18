@@ -15,8 +15,8 @@ func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
 		Msg("Start consuming messages")
 
 	r := kafka.NewReader(kafka.ReaderConfig{
-		Brokers:   ctx.Value("brokers").([]string),
-		Topic:     ctx.Value("topic").(string),
+		Brokers:   ctx.Value(brokersKey).([]string),
+		Topic:     ctx.Value(topicKey).(string),
 		Partition: 0,
 		MinBytes:  10e3, // 10KB
 		MaxBytes:  10e6, // 10MB
