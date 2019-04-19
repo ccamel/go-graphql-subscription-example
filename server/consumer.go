@@ -12,7 +12,12 @@ import (
 )
 
 func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
-	log := ctx.Value(logKey).(zerolog.Logger)
+	log :=
+		zerolog.
+			Ctx(ctx).
+			With().
+			Str("subscriptionID", ctx.Value(subscriptionID).(string)).
+			Logger()
 
 	log.
 		Info().
