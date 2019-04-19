@@ -10,7 +10,7 @@ go-graphql-subscription-example
 ## Technical stack    
 This application mainly uses:    
     
-* _GraphQL_: [graphql-go](https://github.com/graph-gophers/graphql-go), [github.com/graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws)       
+* _GraphQL_: [graphql-go](https://github.com/graph-gophers/graphql-go), [github.com/graph-gophers/graphql-transport-ws](graphql-transport-ws), [graphiql](https://github.com/graphql/graphiql)       
 * _Kafka_: [connect-kafka](https://github.com/segment-integrations/connect-kafka)  
 * _CLI_: [cobra](https://github.com/spf13/cobra)  
 * _Log_: [zerolog](https://github.com/rs/zerolog)  
