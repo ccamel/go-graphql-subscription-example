@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/rs/zerolog"
+
 	graphql "github.com/ccamel/go-graphql-subscription-example/server/scalar"
 )
 
@@ -12,16 +14,16 @@ type ctxKey int
 const (
 	topicKey ctxKey = iota
 	brokersKey
+	logKey
 )
 
 type Resolver struct {
+	log zerolog.Logger
 	cfg *Configuration
 }
 
-func NewResolver(cfg *Configuration) *Resolver {
-	return &Resolver{
-		cfg,
-	}
+func NewResolver(cfg *Configuration, log zerolog.Logger) *Resolver {
+	return &Resolver{log, cfg}
 }
 
 func (r *Resolver) Event(
@@ -35,6 +37,7 @@ func (r *Resolver) Event(
 
 	c := make(chan *graphql.JSONObject)
 
+	ctx = context.WithValue(ctx, logKey, r.log)
 	ctx = context.WithValue(ctx, topicKey, args.Topic)
 	ctx = context.WithValue(ctx, brokersKey, r.cfg.Brokers)
 

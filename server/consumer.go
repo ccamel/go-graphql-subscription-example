@@ -5,11 +5,15 @@ import (
 	"encoding/json"
 	"io"
 
+	"github.com/rs/zerolog"
+
 	graphql "github.com/ccamel/go-graphql-subscription-example/server/scalar"
 	"github.com/segmentio/kafka-go"
 )
 
 func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
+	log := ctx.Value(logKey).(zerolog.Logger)
+
 	log.
 		Info().
 		Msg("Start consuming messages")

@@ -7,8 +7,6 @@ import (
 	"github.com/segmentio/kafka-go"
 )
 
-var log zerolog.Logger
-
 // LoggerFunc turns a function into an a zerolog marshaller.
 type LoggerFunc func(e *zerolog.Event)
 
@@ -28,6 +26,6 @@ func KafkaMessageAsZerologObject(message kafka.Message) LoggerFunc {
 	})
 }
 
-func init() {
-	log = zerolog.New(os.Stderr).With().Timestamp().Logger()
+func NewLogger() zerolog.Logger {
+	return zerolog.New(os.Stderr).With().Timestamp().Logger()
 }

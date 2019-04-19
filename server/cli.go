@@ -18,7 +18,9 @@ to kafka topics.
 		
 					See https://github.com/ccamel/go-graphql-subscription-example`,
 		Run: func(cmd *cobra.Command, args []string) {
-			StartServer(cfg)
+			server := NewServer(cfg)
+
+			server.Start()
 		},
 	}
 

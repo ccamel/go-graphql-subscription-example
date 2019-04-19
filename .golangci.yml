@@ -12,8 +12,6 @@ output:
 linters:
   enable-all: true
   disable:
-    - gochecknoglobals
-    - gochecknoinits
     - lll
   fast: false
 
