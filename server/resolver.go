@@ -14,9 +14,10 @@ import (
 type ctxKey int
 
 const (
-	topicKey ctxKey = iota
+	subscriptionID ctxKey = iota
 	brokersKey
-	subscriptionID
+	topicKey
+	offsetKey
 )
 
 type Resolver struct {
@@ -31,17 +32,20 @@ func NewResolver(cfg *Configuration, log zerolog.Logger) *Resolver {
 func (r *Resolver) Event(
 	ctx context.Context,
 	args *struct {
-		Topic string
+		On string
+		At graphql.Offset
 	}) (<-chan *graphql.JSONObject, error) {
-	if !acceptTopic(args.Topic, r.cfg.Topics) {
-		return nil, fmt.Errorf("unknown topic: '%s'. Valid topics are: %v", args.Topic, r.cfg.Topics)
+	if !acceptTopic(args.On, r.cfg.Topics) {
+		return nil, fmt.Errorf("unknown topic: '%s'. Valid topics are: %v", args.On, r.cfg.Topics)
 	}
-
 	c := make(chan *graphql.JSONObject)
 
-	ctx = context.WithValue(ctx, topicKey, args.Topic)
-	ctx = context.WithValue(ctx, brokersKey, r.cfg.Brokers)
 	ctx = context.WithValue(ctx, subscriptionID, uuid.NewV4().String())
+	ctx = context.WithValue(ctx, brokersKey, r.cfg.Brokers)
+
+	ctx = context.WithValue(ctx, topicKey, args.On)
+	ctx = context.WithValue(ctx, offsetKey, args.At)
+
 	ctx = r.log.WithContext(ctx)
 
 	go consume(ctx, c)

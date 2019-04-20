@@ -12,6 +12,9 @@ import (
 )
 
 func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
+	topic := ctx.Value(topicKey).(string)
+	offset := ctx.Value(offsetKey).(graphql.Offset).Value()
+
 	log :=
 		zerolog.
 			Ctx(ctx).
@@ -21,15 +24,28 @@ func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
 
 	log.
 		Info().
+		Str("topic", topic).
+		Str("offset", offset.String()).
 		Msg("Start consuming messages")
 
 	r := kafka.NewReader(kafka.ReaderConfig{
 		Brokers:   ctx.Value(brokersKey).([]string),
-		Topic:     ctx.Value(topicKey).(string),
+		Topic:     topic,
 		Partition: 0,
-		MinBytes:  10e3, // 10KB
-		MaxBytes:  10e6, // 10MB
+
+		MinBytes: 10e3, // 10KB
+		MaxBytes: 10e6, // 10MB
 	})
+
+	err := r.SetOffset(offset.Int64())
+	if err != nil {
+		log.
+			Warn().
+			Err(err).
+			Str("offset", offset.String()).
+			Msg("Error when setting offset")
+		return
+	}
 
 	defer func() {
 		_ = r.Close()
@@ -69,6 +85,6 @@ func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
 			Object("message", KafkaMessageAsZerologObject(m)).
 			Msg("Sending new message to subscriber")
 
-		channel <- graphql.New(v)
+		channel <- graphql.NewJSONObject(v)
 	}
 }
