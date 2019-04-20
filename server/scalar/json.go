@@ -1,4 +1,4 @@
-package graphql
+package scalar
 
 import (
 	"encoding/json"
@@ -10,7 +10,7 @@ type JSONObject struct {
 	v map[string]interface{}
 }
 
-func New(v map[string]interface{}) *JSONObject {
+func NewJSONObject(v map[string]interface{}) *JSONObject {
 	return &JSONObject{v}
 }
 
@@ -20,10 +20,10 @@ func (JSONObject) ImplementsGraphQLType(name string) bool {
 	return name == "JSONObject"
 }
 
-// UnmarshalGraphQL is a custom unmarshaler for Time
+// UnmarshalGraphQL is a custom unmarshaler for JSONObject
 //
 // This function will be called whenever you use the
-// time scalar as an input
+// JSONObject scalar as an input
 func (t *JSONObject) UnmarshalGraphQL(input interface{}) error {
 	switch input := input.(type) {
 	case map[string]interface{}:
@@ -34,10 +34,10 @@ func (t *JSONObject) UnmarshalGraphQL(input interface{}) error {
 	}
 }
 
-// MarshalJSON is a custom marshaler for Time
+// MarshalJSON is a custom marshaler for JSONObject
 //
 // This function will be called whenever you
-// query for fields that use the Time type
+// query for fields that use the JSONObject type
 func (t JSONObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(t.v)
 }
