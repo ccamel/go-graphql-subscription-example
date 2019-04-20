@@ -91,7 +91,17 @@ Navigate to `http://localhost:8000/graphiql` URL and submit the subscription to 
 
 ```graphql
 subscription {
-  event(topic: "topic-a")
+  event(on: "topic-a")
+}
+```
+
+The offset id to consume from can also be specified. Negative values have a special meaning:
+- `-1`: the most recent offset available for a partition (end)
+- `-2`: the least recent offset available for a partition (beginning)
+
+```graphql
+subscription {
+  event(on: "topic-a", at: -1)
 }
 ```
 
