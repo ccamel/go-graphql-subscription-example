@@ -1,14 +1,25 @@
 scalar JSONObject
+scalar Offset
 
 schema {
-	query: Query
-    subscription: Subscription
+  query: Query
+  subscription: Subscription
 }
 
 type Query {
-	topics: [String!]!
+  # List available topics.
+  topics: [String!]!
 }
 
 type Subscription {
-    event(topic: String!): JSONObject
+  # Subscribe to events on the given topic.
+  event(
+    # Name of the topic to subscribe to.
+    on: String!,
+    # The offset id to consume from (a non-negative number), or:
+    # - `-1`: the most recent offset available for a partition (end)
+    # - `-2`: the least recent offset available for a partition (beginning)
+    #
+    # default: -2
+    at: Offset = "-2"): JSONObject
 }
