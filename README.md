@@ -8,12 +8,28 @@ go-graphql-subscription-example
 > Project that demonstrates GraphQL [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages.    
 
 ## Technical stack    
+
 This application mainly uses:    
     
-* _GraphQL_: [graphql-go](https://github.com/graph-gophers/graphql-go), [graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws), [graphiql](https://github.com/graphql/graphiql)       
-* _Kafka_: [connect-kafka](https://github.com/segment-integrations/connect-kafka)  
-* _CLI_: [cobra](https://github.com/spf13/cobra)  
-* _Log_: [zerolog](https://github.com/rs/zerolog)  
+* _GraphQL_
+ 
+  ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go) ┇ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) ┇ [graphql/graphiql](https://github.com/graphql/graphiql)       
+
+* _Kafka_
+ 
+  ↳ [segment-integrations/connect-kafka](https://github.com/segment-integrations/connect-kafka)
+  
+* _Expression language_
+ 
+  ↳ [antonmedv/expr](https://github.com/antonmedv/expr)
+    
+* _CLI_
+ 
+  ↳ [spf13/cobra](https://github.com/spf13/cobra)  
+
+* _Log_ 
+
+  ↳ [rs/zerolog](https://github.com/rs/zerolog)  
   
 ## Pre-requisites
     
@@ -105,6 +121,18 @@ subscription {
 }
 ```
 
+Additionally, a filter expression can be specified. The events consumed are then only ones matching the given predicate.
+
+```graphql
+subscription {
+  event(
+    on: "topic-a",
+    at: -1,
+    matching: "value > 8"
+  )
+}
+```
+
 ### 5. Push messages
 
 Run the producer and then type a few messages into the console to send to Kafka. Note that messages shall be 
@@ -112,7 +140,7 @@ Run the producer and then type a few messages into the console to send to Kafka.
 
 ```sh
 > bin/kafka-console-producer.sh --broker-list localhost:9092 --topic topic-a
-{ "message": "hello world !" }
+{ "message": "hello world !", "value": 14 }
 ``` 
 
 The message should be displayed on the browser.
