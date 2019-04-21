@@ -21,5 +21,7 @@ type Subscription {
     # - `-2`: the least recent offset available for a partition (beginning)
     #
     # default: -2
-    at: Offset = "-2"): JSONObject
+    at: Offset = "-2",
+    # Specifies a boolean expression allowing to filter events matching the predicate.
+    matching: String): JSONObject
 }
