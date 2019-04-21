@@ -4,20 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	uuid "github.com/satori/go.uuid"
-
 	"github.com/rs/zerolog"
 
 	graphql "github.com/ccamel/go-graphql-subscription-example/server/scalar"
-)
-
-type ctxKey int
-
-const (
-	subscriptionID ctxKey = iota
-	brokersKey
-	topicKey
-	offsetKey
 )
 
 type Resolver struct {
@@ -40,15 +29,15 @@ func (r *Resolver) Event(
 	}
 	c := make(chan *graphql.JSONObject)
 
-	ctx = context.WithValue(ctx, subscriptionID, uuid.NewV4().String())
-	ctx = context.WithValue(ctx, brokersKey, r.cfg.Brokers)
-
-	ctx = context.WithValue(ctx, topicKey, args.On)
-	ctx = context.WithValue(ctx, offsetKey, args.At)
-
 	ctx = r.log.WithContext(ctx)
 
-	go consume(ctx, c)
+	go NewConsumer(
+		ctx,
+		r.cfg.Brokers,
+		args.On,
+		args.At.Value().Int64(),
+		c,
+	).Start()
 
 	return c, nil
 }
