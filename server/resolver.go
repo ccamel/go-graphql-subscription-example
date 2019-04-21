@@ -21,8 +21,9 @@ func NewResolver(cfg *Configuration, log zerolog.Logger) *Resolver {
 func (r *Resolver) Event(
 	ctx context.Context,
 	args *struct {
-		On string
-		At graphql.Offset
+		On       string
+		At       graphql.Offset
+		Matching *string
 	}) (<-chan *graphql.JSONObject, error) {
 	if !acceptTopic(args.On, r.cfg.Topics) {
 		return nil, fmt.Errorf("unknown topic: '%s'. Valid topics are: %v", args.On, r.cfg.Topics)
@@ -31,13 +32,19 @@ func (r *Resolver) Event(
 
 	ctx = r.log.WithContext(ctx)
 
-	go NewConsumer(
+	consumer, err := NewConsumer(
 		ctx,
 		r.cfg.Brokers,
 		args.On,
 		args.At.Value().Int64(),
+		args.Matching,
 		c,
-	).Start()
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	go consumer.Start()
 
 	return c, nil
 }
