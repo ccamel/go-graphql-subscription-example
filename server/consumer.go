@@ -7,13 +7,13 @@ import (
 
 	"github.com/rs/zerolog"
 
-	graphql "github.com/ccamel/go-graphql-subscription-example/server/scalar"
+	"github.com/ccamel/go-graphql-subscription-example/server/scalar"
 	"github.com/segmentio/kafka-go"
 )
 
-func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
+func consume(ctx context.Context, channel chan<- *scalar.JSONObject) {
 	topic := ctx.Value(topicKey).(string)
-	offset := ctx.Value(offsetKey).(graphql.Offset).Value()
+	offset := ctx.Value(offsetKey).(scalar.Offset).Value()
 
 	log :=
 		zerolog.
@@ -85,6 +85,6 @@ func consume(ctx context.Context, channel chan<- *graphql.JSONObject) {
 			Object("message", KafkaMessageAsZerologObject(m)).
 			Msg("Sending new message to subscriber")
 
-		channel <- graphql.NewJSONObject(v)
+		channel <- scalar.NewJSONObject(v)
 	}
 }
