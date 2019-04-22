@@ -15,7 +15,7 @@ func (f LoggerFunc) MarshalZerologObject(e *zerolog.Event) {
 	f(e)
 }
 
-// AsEventTraitZerologObject converts a
+// AsEventTraitZerologObject converts a kafka message into a LogObjectMarshaler.
 func KafkaMessageAsZerologObject(message kafka.Message) LoggerFunc {
 	return LoggerFunc(func(e *zerolog.Event) {
 		e.
@@ -23,6 +23,14 @@ func KafkaMessageAsZerologObject(message kafka.Message) LoggerFunc {
 			Int64("offset", message.Offset).
 			Time("time", message.Time).
 			Int("size", len(message.Value))
+	})
+}
+
+// MapAsZerologObject converts a map into a LogObjectMarshaler.
+func MapAsZerologObject(m map[string]interface{}) LoggerFunc {
+	return LoggerFunc(func(e *zerolog.Event) {
+		e.
+			Fields(m)
 	})
 }
 
