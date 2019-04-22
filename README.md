@@ -22,7 +22,11 @@ This application mainly uses:
 * _Expression language_
  
   ↳ [antonmedv/expr](https://github.com/antonmedv/expr)
-    
+
+* _Design Patterns_
+
+  ↳ [ReactiveX/RxGo v2](https://github.com/ReactiveX/RxGo/tree/v2)
+
 * _CLI_
  
   ↳ [spf13/cobra](https://github.com/spf13/cobra)  
