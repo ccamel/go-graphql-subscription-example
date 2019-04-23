@@ -7,6 +7,18 @@ go-graphql-subscription-example
 
 > Project that demonstrates GraphQL [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages.    
 
+## Purpose
+
+This repository implements a simple service allowing clients to consume messages from a kafka topic through a [graphQL](https://graphql.org/) subscription endpoint.
+
+This particular example demonstrates how to perform basic operations such as:
+
+- serve a [graphiQL](https://github.com/graphql/graphiql) page
+- implement a subscription resolver
+- implement custom graphQL scalars
+- consume Kafka messages
+- ...
+
 ## Technical stack    
 
 This application mainly uses:    
