@@ -5,7 +5,7 @@ go-graphql-subscription-example
 [![git3moji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
 [![License](https://img.shields.io/github/license/ccamel/go-graphql-subscription-example.svg?style=flat-square)]( https://github.com/ccamel/go-graphql-subscription-example/blob/master/LICENSE)
 
-> Project that demonstrates GraphQL [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages.    
+> Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages.    
 
 ## Purpose
 
@@ -14,39 +14,56 @@ This repository implements a simple service allowing clients to consume messages
 This particular example demonstrates how to perform basic operations such as:
 
 - serve a [graphiQL](https://github.com/graphql/graphiql) page
-- implement a subscription resolver
-- implement custom graphQL scalars
+- implement a subscription resolver using WebSocket transport
+- implement custom [graphQL] _scalars_
 - consume Kafka messages
+- filter messages using an expression evaluator
 - ...
 
-## Technical stack    
+## Stack    
+
+### Technical
 
 This application mainly uses:    
     
-* _GraphQL_
+* **GraphQL**
  
-  ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go) ┇ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) ┇ [graphql/graphiql](https://github.com/graphql/graphiql)       
+  ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go)
+  
+  ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) 
+  
+  ↳ [graphql/graphiql](https://github.com/graphql/graphiql)       
 
-* _Kafka_
+* **Kafka**
  
   ↳ [segment-integrations/connect-kafka](https://github.com/segment-integrations/connect-kafka)
   
-* _Expression language_
+* **Expression language**
  
   ↳ [antonmedv/expr](https://github.com/antonmedv/expr)
 
-* _Design Patterns_
+* **Design Patterns**
 
   ↳ [ReactiveX/RxGo v2](https://github.com/ReactiveX/RxGo/tree/v2)
 
-* _CLI_
+* **CLI**
  
   ↳ [spf13/cobra](https://github.com/spf13/cobra)  
 
-* _Log_ 
+* **Log** 
 
   ↳ [rs/zerolog](https://github.com/rs/zerolog)  
-  
+
+### Project
+
+* **Build**
+
+  ↳ [make](https://www.gnu.org/software/make/)
+
+* **Linter**  
+
+  ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
+
 ## Pre-requisites
     
  **Requires Go 1.11.x** or above, which support Go modules. Read more about them [here](https://github.com/golang/go/wiki/Modules).    
@@ -160,3 +177,5 @@ Run the producer and then type a few messages into the console to send to Kafka.
 ``` 
 
 The message should be displayed on the browser.
+
+[graphQL]: https://graphql.org/
