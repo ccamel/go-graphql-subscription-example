@@ -11,6 +11,8 @@ go-graphql-subscription-example
 
 This repository implements a simple service allowing clients to consume messages from a kafka topic through a [graphQL](https://graphql.org/) subscription endpoint.
 
+![overview](doc/overview.png)
+
 This particular example demonstrates how to perform basic operations such as:
 
 - serve a [graphiQL](https://github.com/graphql/graphiql) page
