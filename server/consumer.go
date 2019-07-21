@@ -5,7 +5,8 @@ import (
 	"encoding/json"
 	"io"
 
-	"github.com/reactivex/rxgo"
+	"github.com/reactivex/rxgo/observable"
+	"github.com/reactivex/rxgo/observer"
 
 	"github.com/rs/zerolog"
 
@@ -43,8 +44,8 @@ func NewConsumer(
 	}
 }
 
-func (c Consumer) AsObservable() rxgo.Observable {
-	return rxgo.Create(func(emitter rxgo.Observer, disposed bool) {
+func (c Consumer) AsObservable() observable.Observable {
+	return observable.Create(func(emitter *observer.Observer, disposed bool) {
 		defer func() {
 			emitter.OnDone()
 
