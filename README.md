@@ -24,50 +24,6 @@ This particular example demonstrates how to perform basic operations such as:
 - filter messages using an expression evaluator
 - ...
 
-## Stack    
-
-### Technical
-
-This application mainly uses:    
-    
-* **GraphQL**
- 
-  ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go)
-  
-  ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) 
-  
-  ↳ [graphql/graphiql](https://github.com/graphql/graphiql)       
-
-* **Kafka**
- 
-  ↳ [segment-integrations/connect-kafka](https://github.com/segment-integrations/connect-kafka)
-  
-* **Expression language**
- 
-  ↳ [antonmedv/expr](https://github.com/antonmedv/expr)
-
-* **Design Patterns**
-
-  ↳ [ReactiveX/RxGo v2](https://github.com/ReactiveX/RxGo/tree/v2)
-
-* **CLI**
- 
-  ↳ [spf13/cobra](https://github.com/spf13/cobra)  
-
-* **Log** 
-
-  ↳ [rs/zerolog](https://github.com/rs/zerolog)  
-
-### Project
-
-* **Build**
-
-  ↳ [make](https://www.gnu.org/software/make/)
-
-* **Linter**  
-
-  ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
-
 ## Pre-requisites
     
  **Requires Go 1.11.x** or above, which support Go modules. Read more about them [here](https://github.com/golang/go/wiki/Modules).    
@@ -81,10 +37,18 @@ The project comes with a `Makefile`, so all the main activities can be performed
 - generated code for embedding the static resources  
   
 To build the project, simply invoke the `build` targets:  
-  
+
 ```sh  
 make build  
 ```
+
+Alternately, the project can be build by docker:
+
+```sh  
+make dockerize  
+```
+
+Command will produce the image `ccamel/go-graphql-subscription-example`.
 
 ## How to use
 
@@ -136,6 +100,12 @@ Run the application which exposes the 2 previously created topics to subscribers
 > ./go-graphql-subscription-example --topics topic-a,topic-b 
 ```
 
+Alternately, if the docker image has been previously built, the container can be started this way:
+
+```sh
+> docker run -ti --rm -p 8000:8000 ccamel/go-graphql-subscription-example --topics topic-a,topic-b
+``` 
+
 ### 4. Subscribe
 
 The application exposes a graphql endpoint through which clients can receive messages coming from a kafka topic.
@@ -181,5 +151,49 @@ Run the producer and then type a few messages into the console to send to Kafka.
 ``` 
 
 The message should be displayed on the browser.
+
+## Stack    
+
+### Technical
+
+This application mainly uses:    
+    
+* **GraphQL**
+ 
+  ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go)
+  
+  ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) 
+  
+  ↳ [graphql/graphiql](https://github.com/graphql/graphiql)       
+
+* **Kafka**
+ 
+  ↳ [segment-integrations/connect-kafka](https://github.com/segment-integrations/connect-kafka)
+  
+* **Expression language**
+ 
+  ↳ [antonmedv/expr](https://github.com/antonmedv/expr)
+
+* **Design Patterns**
+
+  ↳ [ReactiveX/RxGo v2](https://github.com/ReactiveX/RxGo/tree/v2)
+
+* **CLI**
+ 
+  ↳ [spf13/cobra](https://github.com/spf13/cobra)  
+
+* **Log** 
+
+  ↳ [rs/zerolog](https://github.com/rs/zerolog)  
+
+### Project
+
+* **Build**
+
+  ↳ [make](https://www.gnu.org/software/make/)
+
+* **Linter**  
+
+  ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
 
 [graphQL]: https://graphql.org/

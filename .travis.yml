@@ -5,7 +5,16 @@ go_import_path: github.com/ccamel/go-graphql-subscription-example
 go:
   - 1.12.4
 
-script:
-  - make gen-static
-  - make check
-  - make build
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - make gen-static
+        - make check
+        - make build
+    - stage: dockerize
+      script:
+        - make dockerize

@@ -22,3 +22,9 @@ check: install-tools
 
 build: gen-static
 	go build .
+
+build-linux-amd64: gen-static
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build .
+
+dockerize:
+	docker build -t ccamel/go-graphql-subscription-example .
