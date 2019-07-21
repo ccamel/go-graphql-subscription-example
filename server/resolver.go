@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/antonmedv/expr"
-	"github.com/reactivex/rxgo"
 	"github.com/reactivex/rxgo/handlers"
+	"github.com/reactivex/rxgo/observer"
 
 	"github.com/rs/zerolog"
 
@@ -45,7 +45,7 @@ func (r *Resolver) Event(
 			return scalar.NewJSONObject(i.(map[string]interface{}))
 		}).
 		Subscribe(
-			rxgo.NewObserver(
+			observer.New(
 				handlers.NextFunc(func(item interface{}) {
 					c <- item.(*scalar.JSONObject)
 				}),

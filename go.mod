@@ -6,14 +6,17 @@ require (
 	github.com/antonmedv/expr v1.1.4
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
+	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190225005345-3e8838d4614c
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20181129022607-40b8cf7c0060
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
 	github.com/kr/pretty v0.1.0 // indirect
+	github.com/onsi/ginkgo v1.8.0 // indirect
+	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/opentracing/opentracing-go v1.1.0 // indirect
 	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
-	github.com/reactivex/rxgo v0.0.0-20190418155641-613168fb034f
+	github.com/reactivex/rxgo v1.0.0
 	github.com/rs/xid v1.2.1 // indirect
 	github.com/rs/zerolog v1.13.0
 	github.com/satori/go.uuid v1.2.0

@@ -43,6 +43,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/reactivex/rxgo v0.0.0-20190418155641-613168fb034f h1:hr3e1mpWm+5Yi2333Gvmz+zSsN7fYMWwpD9IMBCvLOU=
 github.com/reactivex/rxgo v0.0.0-20190418155641-613168fb034f/go.mod h1:m/Mf8ML/A7HwBEn1SCErG79o7sVpaLp/wFrHap6tyDI=
+github.com/reactivex/rxgo v1.0.0 h1:qpT8/kVwAJDSeGsqx4oUXxgk3UCtAq/EreBGWYRxEcA=
+github.com/reactivex/rxgo v1.0.0/go.mod h1:/S1ygE20oE1BvZGIwd3fXx/m6s6pOX5G6zmXg9ninlQ=
 github.com/rs/xid v1.2.1 h1:mhH9Nq+C1fY2l1XIpgxIiUOfNpRBYH1kKcr+qfKgjRc=
 github.com/rs/xid v1.2.1/go.mod h1:+uKXf+4Djp6Md1KODXJxgGQPKngRmWyn10oCKFzNHOQ=
 github.com/rs/zerolog v1.13.0 h1:hSNcYHyxDWycfePW7pUI8swuFkcSMPKh3E63Pokg1Hk=
