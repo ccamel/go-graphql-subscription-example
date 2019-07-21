@@ -7,4 +7,5 @@ go:
 
 script:
   - make gen-static
+  - make check
   - make build
