@@ -5,7 +5,7 @@ go-graphql-subscription-example
 [![git3moji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
 [![License](https://img.shields.io/github/license/ccamel/go-graphql-subscription-example.svg?style=flat-square)]( https://github.com/ccamel/go-graphql-subscription-example/blob/master/LICENSE)
 
-> Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages.    
+> Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages from pre-configured topics.
 
 ## Purpose
 
@@ -32,17 +32,15 @@ This particular example demonstrates how to perform basic operations such as:
   
 The project comes with a `Makefile`, so all the main activities can be performed by [make](https://www.gnu.org/software/make/).  
   
-:warning: The source code provided is incomplete: it does not contain generated code:  
+:warning: The source code provided is incomplete - build needs a code generation phase, especially for the embedding of the static resources. 
   
-- generated code for embedding the static resources  
-  
-To build the project, simply invoke the `build` targets:  
+To build the project, simply invoke the `build` target:
 
 ```sh  
 make build  
 ```
 
-Alternately, the project can be build by docker:
+Alternately, the project can be build by [docker](https://www.docker.com/):
 
 ```sh  
 make dockerize  
@@ -50,13 +48,13 @@ make dockerize
 
 Command will produce the image `ccamel/go-graphql-subscription-example`.
 
-## How to use
+## How to play with it?
 
 ### 1. Start Kafka server
 
 At first, kafka must be started. See [official documentation](https://kafka.apache.org/quickstart) for more.
 
-Kafka uses ZooKeeper so you need to first start a ZooKeeper server if you don't already have one.
+Kafka uses [ZooKeeper](https://zookeeper.apache.org/) so you need to first start a ZooKeeper server if you don't already have one.
 
 ```sh
 > bin/zookeeper-server-start.sh config/zookeeper.properties
@@ -129,6 +127,7 @@ subscription {
 ```
 
 Additionally, a filter expression can be specified. The events consumed are then only ones matching the given predicate.
+You can refer to [antonmedv/expr] for an overview of the syntax to use to write predicates.
 
 ```graphql
 subscription {
@@ -172,7 +171,7 @@ This application mainly uses:
   
 * **Expression language**
  
-  ↳ [antonmedv/expr](https://github.com/antonmedv/expr)
+  ↳ [antonmedv/expr]
 
 * **Design Patterns**
 
@@ -196,4 +195,5 @@ This application mainly uses:
 
   ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
 
+[antonmedv/expr]: https://github.com/antonmedv/expr
 [graphQL]: https://graphql.org/
