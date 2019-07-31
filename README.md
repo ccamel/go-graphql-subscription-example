@@ -2,6 +2,7 @@ go-graphql-subscription-example
 ===============================
     
 [![build-status](https://img.shields.io/travis/ccamel/go-graphql-subscription-example.svg?logo=travis&style=flat-square)](https://travis-ci.org/ccamel/go-graphql-subscription-example)
+[![fossa-status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
 [![go-report-card](https://goreportcard.com/badge/github.com/ccamel/go-graphql-subscription-example)](https://goreportcard.com/report/github.com/ccamel/go-graphql-subscription-example)
 [![maintainability](https://api.codeclimate.com/v1/badges/67162ec92b2fb97bdb3e/maintainability)](https://codeclimate.com/github/ccamel/go-graphql-subscription-example/maintainability)
 [![stackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat-square)](https://stackshare.io/ccamel/go-graphql-subscription-example)
@@ -197,6 +198,14 @@ This application mainly uses:
 * **Linter**  
 
   ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
+
+
+
+## License
+
+[MIT] © [Chris Camel]
+
+[![fossa-status-large](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_large)
 
 [antonmedv/expr]: https://github.com/antonmedv/expr
 [graphQL]: https://graphql.org/
