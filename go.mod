@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/antonmedv/expr v1.1.4
-	github.com/golang/protobuf v1.3.1 // indirect
+	github.com/golang/protobuf v1.3.2 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190225005345-3e8838d4614c
