@@ -2,13 +2,12 @@ go-graphql-subscription-example
 ===============================
     
 [![build-status](https://img.shields.io/travis/ccamel/go-graphql-subscription-example.svg?logo=travis&style=flat-square)](https://travis-ci.org/ccamel/go-graphql-subscription-example)
-[![fossa-status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
 [![go-report-card](https://goreportcard.com/badge/github.com/ccamel/go-graphql-subscription-example)](https://goreportcard.com/report/github.com/ccamel/go-graphql-subscription-example)
 [![maintainability](https://api.codeclimate.com/v1/badges/67162ec92b2fb97bdb3e/maintainability)](https://codeclimate.com/github/ccamel/go-graphql-subscription-example/maintainability)
 [![stackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat-square)](https://stackshare.io/ccamel/go-graphql-subscription-example)
 [![git3moji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
 [![license](https://img.shields.io/github/license/ccamel/go-graphql-subscription-example.svg?style=flat-square)]( https://github.com/ccamel/go-graphql-subscription-example/blob/master/LICENSE)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
+[![fossa-status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
 
 > Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume [Apache Kafka](https://kafka.apache.org/) messages from pre-configured topics.
 
@@ -210,7 +209,3 @@ This application mainly uses:
 
 [antonmedv/expr]: https://github.com/antonmedv/expr
 [graphQL]: https://graphql.org/
-
-
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_large)
