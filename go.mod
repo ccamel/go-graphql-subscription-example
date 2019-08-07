@@ -4,14 +4,14 @@ go 1.12
 
 require (
 	github.com/antonmedv/expr v1.1.4
+	github.com/frankban/quicktest v1.4.1 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
-	github.com/kr/pretty v0.1.0 // indirect
-	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
+	github.com/pierrec/lz4 v2.2.6+incompatible // indirect
 	github.com/reactivex/rxgo v1.0.0
 	github.com/rs/xid v1.2.1 // indirect
 	github.com/rs/zerolog v1.13.0
