@@ -5,7 +5,6 @@ go 1.12
 require (
 	github.com/antonmedv/expr v1.1.4
 	github.com/frankban/quicktest v1.4.1 // indirect
-	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
@@ -15,7 +14,7 @@ require (
 	github.com/reactivex/rxgo v1.0.0
 	github.com/rs/zerolog v1.14.3
 	github.com/satori/go.uuid v1.2.0
-	github.com/segmentio/kafka-go v0.2.2
+	github.com/segmentio/kafka-go v0.3.0
 	github.com/spf13/cobra v0.0.3
 	github.com/spf13/pflag v1.0.3 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
