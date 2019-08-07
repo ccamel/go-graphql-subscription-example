@@ -10,8 +10,8 @@ github.com/gorilla/websocket v1.4.0 h1:WDFjx/TMzVgy9VdMMQi2K2Emtwi2QcUQsztZ/zLaH
 github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
 github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6 h1:lDEXMNdF8ge4FcDoB4ADJkxaj8BilKS2Yx3Xxsswwx8=
 github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6/go.mod h1:Au3iQ8DvDis8hZ4q2OzRcaKYlAsPt+fYvib5q4nIqu4=
-github.com/graph-gophers/graphql-transport-ws v0.0.0-20181129022607-40b8cf7c0060 h1:B2EIwB0lR336zU77c8r/b5clIE5UcjZicUi6GjXcjdw=
-github.com/graph-gophers/graphql-transport-ws v0.0.0-20181129022607-40b8cf7c0060/go.mod h1:mA6VjyefgI7zd37tC3zopb51mW39gSfnEoWvtnxsqKQ=
+github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299 h1:IJk8ZeuZqLTWSIuR82QMVDLwMFhIKbcwNJlDl4Hg7aY=
+github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299/go.mod h1:mA6VjyefgI7zd37tC3zopb51mW39gSfnEoWvtnxsqKQ=
 github.com/inconshreveable/mousetrap v1.0.0 h1:Z8tu5sraLXCXIcARxBp/8cbvlwVa7Z1NHg9XEKhtSvM=
 github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
 github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da h1:5y58+OCjoHCYB8182mpf/dEsq0vwTKPOo4zGfH0xW9A=
