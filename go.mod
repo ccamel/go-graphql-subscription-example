@@ -8,15 +8,13 @@ require (
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
-	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
 	github.com/pierrec/lz4 v2.2.6+incompatible // indirect
 	github.com/reactivex/rxgo v1.0.0
 	github.com/rs/zerolog v1.14.3
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.3.0
-	github.com/spf13/cobra v0.0.3
-	github.com/spf13/pflag v1.0.3 // indirect
+	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/objx v0.2.0 // indirect
 	golang.org/x/net v0.0.0-20190807123829-ca1201d0de80 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
