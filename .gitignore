@@ -10,9 +10,6 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Static generation
-static/*.go
-
 # Idea
 .idea/
 
