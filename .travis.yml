@@ -14,7 +14,6 @@ env:
 
 before_install:
   - travis_retry docker pull golang:1.12.4
-  - travis_retry make gen-static
   - travis_retry make install-deps
 
 jobs:

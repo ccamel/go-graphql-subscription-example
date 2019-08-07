@@ -25,10 +25,10 @@ gen-static: install-tools
 check: install-tools
 	golangci-lint run ./...
 
-build: gen-static
+build:
 	go build .
 
-build-linux-amd64: gen-static
+build-linux-amd64:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build .
 
 dockerize:
