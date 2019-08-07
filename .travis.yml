@@ -8,11 +8,19 @@ go:
 services:
   - docker
 
+env:
+  global:
+    - CACHE_FOLDER=$HOME/docker-images
+
+before_install:
+  - travis_retry docker pull golang:1.12.4
+  - travis_retry make gen-static
+  - travis_retry make install-deps
+
 jobs:
   include:
     - stage: build
       script:
-        - make gen-static
         - make check
         - make build
     - stage: dockerize
