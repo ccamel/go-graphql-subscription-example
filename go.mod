@@ -7,7 +7,7 @@ require (
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
-	github.com/graph-gophers/graphql-transport-ws v0.0.0-20181129022607-40b8cf7c0060
+	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
 	github.com/kr/pretty v0.1.0 // indirect
