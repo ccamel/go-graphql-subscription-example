@@ -11,7 +11,7 @@ require (
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
 	github.com/pierrec/lz4 v2.2.6+incompatible // indirect
 	github.com/reactivex/rxgo v1.0.0
-	github.com/rs/zerolog v1.14.3
+	github.com/rs/zerolog v1.15.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.3.1
 	github.com/spf13/cobra v0.0.5
