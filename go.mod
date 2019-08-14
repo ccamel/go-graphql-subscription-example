@@ -13,7 +13,7 @@ require (
 	github.com/reactivex/rxgo v1.0.0
 	github.com/rs/zerolog v1.15.0
 	github.com/satori/go.uuid v1.2.0
-	github.com/segmentio/kafka-go v0.3.1
+	github.com/segmentio/kafka-go v0.3.2
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/objx v0.2.0 // indirect
 	golang.org/x/net v0.0.0-20190813215801-74dc4d7220e7 // indirect
