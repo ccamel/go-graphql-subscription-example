@@ -1,7 +1,7 @@
 go-graphql-subscription-example
 ===============================
     
-[![build-status](https://img.shields.io/travis/ccamel/go-graphql-subscription-example/master.svg?logo=travis&style=flat-square)](https://travis-ci.org/ccamel/go-graphql-subscription-example)
+[![build-status](https://circleci.com/gh/ccamel/go-graphql-subscription-example/tree/master.svg?style=shield)](https://circleci.com/gh/ccamel/go-graphql-subscription-example/tree/master)
 [![go-report-card](https://goreportcard.com/badge/github.com/ccamel/go-graphql-subscription-example/master)](https://goreportcard.com/report/github.com/ccamel/go-graphql-subscription-example)
 [![maintainability](https://api.codeclimate.com/v1/badges/67162ec92b2fb97bdb3e/maintainability)](https://codeclimate.com/github/ccamel/go-graphql-subscription-example/maintainability)
 [![stackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat-square)](https://stackshare.io/ccamel/go-graphql-subscription-example)
