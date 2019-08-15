@@ -3,7 +3,7 @@ module github.com/ccamel/go-graphql-subscription-example
 go 1.12
 
 require (
-	github.com/antonmedv/expr v1.1.4
+	github.com/antonmedv/expr v0.0.0-20190808132057-33a808e9f883
 	github.com/frankban/quicktest v1.4.1 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
