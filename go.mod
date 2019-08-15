@@ -9,7 +9,7 @@ require (
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
-	github.com/pierrec/lz4 v2.2.6+incompatible // indirect
+	github.com/pierrec/lz4 v3.0.1 // indirect
 	github.com/reactivex/rxgo v1.0.0
 	github.com/rs/zerolog v1.15.0
 	github.com/satori/go.uuid v1.2.0
