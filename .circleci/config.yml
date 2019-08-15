@@ -1,0 +1,27 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.12.4
+
+    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - restore_cache:
+          keys:
+            - v1-pkg-cache
+
+      - run: make check
+      - run: make build
+      - run: make dockerize
+
+      - save_cache:
+          key: v1-pkg-cache
+          paths:
+            - "/go/pkg"
