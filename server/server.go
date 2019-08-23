@@ -73,7 +73,15 @@ func (s *Server) graphiqlApp() http.Handler {
 }
 
 func (s *Server) graphqlApp() http.Handler {
-	schema := graphql.MustParseSchema(static.FSMustString(false, "/static/graphql/schema/subscription-api.graphql"), NewResolver(s.cfg, s.log))
+	resolver, err := NewResolver(s.cfg, s.log)
+	if err != nil {
+		s.log.
+			Fatal().
+			Err(err).
+			Msg("Failed to create resolver")
+	}
+
+	schema := graphql.MustParseSchema(static.FSMustString(false, "/static/graphql/schema/subscription-api.graphql"), resolver)
 
 	graphQLHandler := graphqlws.NewHandlerFunc(schema, &relay.Handler{Schema: schema})
 

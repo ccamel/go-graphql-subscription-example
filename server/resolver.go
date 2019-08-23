@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"fmt"
+	"net/url"
 
 	"github.com/antonmedv/expr"
 	"github.com/reactivex/rxgo/handlers"
@@ -16,10 +17,26 @@ import (
 type Resolver struct {
 	log zerolog.Logger
 	cfg *Configuration
+
+	source Source
 }
 
-func NewResolver(cfg *Configuration, log zerolog.Logger) *Resolver {
-	return &Resolver{log, cfg}
+func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
+	sourceURI, err := url.Parse(cfg.Source)
+	if err != nil {
+		return nil, err
+	}
+
+	source, err := NewSource(*sourceURI)
+	if err != nil {
+		return nil, err
+	}
+
+	return &Resolver{
+		log,
+		cfg,
+		source,
+	}, nil
 }
 
 func (r *Resolver) Event(
@@ -36,8 +53,7 @@ func (r *Resolver) Event(
 
 	ctx = r.log.WithContext(ctx)
 
-	NewConsumer(ctx, r.cfg.Brokers, args.On, args.At.Value().Int64()).
-		AsObservable().
+	r.source.NewConsumer(ctx, args.On, args.At.Value().Int64()).
 		Filter(func(i interface{}) bool {
 			return r.acceptMessage(i.(map[string]interface{}), args.Matching)
 		}).
