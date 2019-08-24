@@ -4,12 +4,11 @@ go 1.12
 
 require (
 	github.com/antonmedv/expr v0.0.0-20190808132057-33a808e9f883
-	github.com/frankban/quicktest v1.4.1 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
-	github.com/pierrec/lz4/v3 v3.0.1 // indirect
+	github.com/kr/pretty v0.1.0 // indirect
 	github.com/reactivex/rxgo v1.0.0
 	github.com/rs/zerolog v1.15.0
 	github.com/satori/go.uuid v1.2.0
