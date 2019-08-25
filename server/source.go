@@ -11,13 +11,13 @@ import (
 
 // Source specifies types which are able to provide a source of events through an Observable.
 type Source interface {
-	URI() url.URL
+	URI() *url.URL
 	// NewConsumer returns a new observable consuming messages from the this source, from a topic, starting
 	// at provided offset (if supported).
 	NewConsumer(ctx context.Context, topic string, offset int64) observable.Observable
 }
 
-type SourceFactory func(uri url.URL) (Source, error)
+type SourceFactory func(uri *url.URL) (Source, error)
 
 // nolint:gochecknoglobals
 var sourceFactories = make(map[string]SourceFactory)
@@ -29,7 +29,7 @@ func RegisterSourceFactory(scheme string, factory SourceFactory) {
 
 // NewSource returns a new instance of source given the uri.
 // The uri contains all the required information to perform a connection to the source endpoint.
-func NewSource(uri url.URL) (Source, error) {
+func NewSource(uri *url.URL) (Source, error) {
 	for scheme, factory := range sourceFactories {
 		if uri.Scheme == scheme {
 			return factory(uri)
