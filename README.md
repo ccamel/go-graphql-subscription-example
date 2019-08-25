@@ -22,7 +22,7 @@ This repository implements a simple service allowing clients to consume messages
 This particular example demonstrates how to perform basic operations such as:
 
 - serve a [graphiQL](https://github.com/graphql/graphiql) page
-- implement a subscription resolver using WebSocket transport
+- implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.4 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md))
 - implement custom [graphQL] _scalars_
 - consume Kafka messages
 - filter messages using an expression evaluator
