@@ -17,11 +17,11 @@ import (
 )
 
 type kafkaSource struct {
-	uri     url.URL
+	uri     *url.URL
 	brokers []string
 }
 
-func (s kafkaSource) URI() url.URL {
+func (s kafkaSource) URI() *url.URL {
 	return s.uri
 }
 
@@ -34,7 +34,7 @@ type kafkaConsumer struct {
 	log        zerolog.Logger
 }
 
-func newKafkaSource(uri url.URL) (Source, error) {
+func newKafkaSource(uri *url.URL) (Source, error) {
 	brokers, err := parseKafkaBrokers(uri)
 	if err != nil {
 		return nil, err
@@ -65,7 +65,7 @@ func (s kafkaSource) NewConsumer(ctx context.Context, topic string, offset int64
 	return makeObservableFromKafkaConsumer(c)
 }
 
-func parseKafkaBrokers(source url.URL) ([]string, error) {
+func parseKafkaBrokers(source *url.URL) ([]string, error) {
 	brokersStr := source.Query().Get("brokers")
 
 	if brokersStr == "" {

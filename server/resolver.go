@@ -27,10 +27,15 @@ func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
 		return nil, err
 	}
 
-	source, err := NewSource(*sourceURI)
+	source, err := NewSource(sourceURI)
 	if err != nil {
 		return nil, err
 	}
+
+	log.
+		Info().
+		Str("source", source.URI().String()).
+		Msgf("Source '%s' configured", source.URI().Scheme)
 
 	return &Resolver{
 		log,
