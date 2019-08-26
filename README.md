@@ -22,7 +22,7 @@ This repository implements a simple service allowing clients to consume messages
 This particular example demonstrates how to perform basic operations such as:
 
 - serve a [graphiQL](https://github.com/graphql/graphiql) page
-- implement a subscription resolver using WebSocket transport
+- implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.4 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md))
 - implement custom [graphQL] _scalars_
 - consume Kafka messages
 - filter messages using an expression evaluator
@@ -90,10 +90,10 @@ Usage:
   go-graphql-subscription-example [flags]
 
 Flags:
-      --brokers strings   The list of broker addresses used to connect to the kafka cluster (default [localhost:9092])
-  -h, --help              help for go-graphql-subscription-example
-      --port uint16       The listening port (default 8000)
-      --topics strings    The list of kafka topics that subscribers can consume (default [foo])
+  -h, --help             help for go-graphql-subscription-example
+      --port uint16      The listening port (default 8000)
+      --source string    The URI of the source to connect to
+      --topics strings   The list of topics/stream names that subscribers can consume (default [foo])
 ```
 
 Run the application which exposes the 2 previously created topics to subscribers: 
