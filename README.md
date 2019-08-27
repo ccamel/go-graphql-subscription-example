@@ -24,8 +24,9 @@ This particular example demonstrates how to perform basic operations such as:
 -   serve a [graphiQL](https://github.com/graphql/graphiql) page
 -   implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.4 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md))
 -   implement custom [graphQL] _scalars_
--   consume [Apache Kafka](https://kafka.apache.org/) messages
--   consume [Redis Streams](https://redis.io/topics/streams-intro)
+-   consumer following kind of stream sources:
+  -   [Apache Kafka](https://kafka.apache.org/) messages
+  -   [Redis Streams](https://redis.io/topics/streams-intro)
 -   filter messages using an expression evaluator
 -   ...
 
@@ -158,6 +159,8 @@ Run the producer and then type a few messages into the console to send to Kafka.
 The message should be displayed on the browser.
 
 ## How to play with it using Redis?
+
+⚠️ Redis implementation does not support offsets (i.e. the capability to resume at some point in time).
 
 ### 1. Start Redis
 
