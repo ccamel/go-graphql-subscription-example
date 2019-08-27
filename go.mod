@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/antonmedv/expr v0.0.0-20190808132057-33a808e9f883
-	github.com/go-redis/redis v6.15.2+incompatible
+	github.com/go-redis/redis v6.15.4+incompatible
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190807123205-010347b5f9e6
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
