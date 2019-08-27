@@ -1,12 +1,11 @@
-go-graphql-subscription-example
-===============================
-    
+# go-graphql-subscription-example
+
 [![build-status](https://circleci.com/gh/ccamel/go-graphql-subscription-example/tree/master.svg?style=shield)](https://circleci.com/gh/ccamel/go-graphql-subscription-example/tree/master)
 [![go-report-card](https://goreportcard.com/badge/github.com/ccamel/go-graphql-subscription-example/master)](https://goreportcard.com/report/github.com/ccamel/go-graphql-subscription-example)
 [![maintainability](https://api.codeclimate.com/v1/badges/67162ec92b2fb97bdb3e/maintainability)](https://codeclimate.com/github/ccamel/go-graphql-subscription-example/maintainability)
 [![stackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat-square)](https://stackshare.io/ccamel/go-graphql-subscription-example)
 [![git3moji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
-[![license](https://img.shields.io/github/license/ccamel/go-graphql-subscription-example.svg?style=flat-square)]( https://github.com/ccamel/go-graphql-subscription-example/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/ccamel/go-graphql-subscription-example.svg?style=flat-square)](https://github.com/ccamel/go-graphql-subscription-example/blob/master/LICENSE)
 [![fossa-status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
 
 > Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume pre-configured topics from different kinds of 
@@ -22,33 +21,33 @@ This repository implements a simple service allowing clients to consume messages
 
 This particular example demonstrates how to perform basic operations such as:
 
-- serve a [graphiQL](https://github.com/graphql/graphiql) page
-- implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.4 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md))
-- implement custom [graphQL] _scalars_
-- consume [Apache Kafka](https://kafka.apache.org/) messages
-- consume [Redis Streams](https://redis.io/topics/streams-intro)
-- filter messages using an expression evaluator
-- ...
+-   serve a [graphiQL](https://github.com/graphql/graphiql) page
+-   implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.4 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md))
+-   implement custom [graphQL] _scalars_
+-   consume [Apache Kafka](https://kafka.apache.org/) messages
+-   consume [Redis Streams](https://redis.io/topics/streams-intro)
+-   filter messages using an expression evaluator
+-   ...
 
 ## Pre-requisites
-    
+
  **Requires Go 1.11.x** or above, which support Go modules. Read more about them [here](https://github.com/golang/go/wiki/Modules).    
-    
-## Build  
-  
+
+## Build
+
 The project comes with a `Makefile`, so all the main activities can be performed by [make](https://www.gnu.org/software/make/).  
-  
+
 :warning: The source code provided is incomplete - build needs a code generation phase, especially for the embedding of the static resources. 
-  
+
 To build the project, simply invoke the `build` target:
 
-```sh  
+```sh
 make build  
 ```
 
 Alternately, the project can be build by [docker](https://www.docker.com/):
 
-```sh  
+```sh
 make dockerize  
 ```
 
@@ -64,13 +63,13 @@ Kafka uses [ZooKeeper](https://zookeeper.apache.org/) so you need to first start
 
 ```sh
 > bin/zookeeper-server-start.sh config/zookeeper.properties
-```  
+```
 
 Now start the Kafka server:
 
 ```sh
 > bin/kafka-server-start.sh config/server.properties
-```  
+```
 
 ### 2. Create topics
 
@@ -108,7 +107,7 @@ Alternately, if the docker image has been previously built, the container can be
 
 ```sh
 > docker run -ti --rm -p 8000:8000 ccamel/go-graphql-subscription-example --topics topic-a,topic-b
-``` 
+```
 
 ### 4. Subscribe
 
@@ -123,8 +122,9 @@ subscription {
 ```
 
 The offset id to consume from can also be specified. Negative values have a special meaning:
-- `-1`: the most recent offset available for a partition (end)
-- `-2`: the least recent offset available for a partition (beginning)
+
+-   `-1`: the most recent offset available for a partition (end)
+-   `-2`: the least recent offset available for a partition (beginning)
 
 ```graphql
 subscription {
@@ -153,7 +153,7 @@ Run the producer and then type a few messages into the console to send to Kafka.
 ```sh
 > bin/kafka-console-producer.sh --broker-list localhost:9092 --topic topic-a
 { "message": "hello world !", "value": 14 }
-``` 
+```
 
 The message should be displayed on the browser.
 
@@ -175,7 +175,7 @@ Alternately, if the docker image has been previously built, the container can be
 
 ```sh
 > docker run -ti --rm -p 8000:8000 ccamel/go-graphql-subscription-example --source redis://6379?name=foo --topics topic-a,topic-b
-``` 
+```
 
 ### 4. Subscribe
 
@@ -208,59 +208,57 @@ Start the `redis-cli` and then use the `XADD` command to send the messages to th
 ```sh
 > redis-cli
 127.0.0.1:6379> XADD topic-a * message "hello world !" "value" "14" 
-``` 
+```
 
 The message should be displayed on the browser.
 
-## Stack    
+## Stack
 
 ### Technical
 
 This application mainly uses:    
-    
-* **GraphQL**
- 
-  ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go)
-  
-  ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) 
-  
-  ↳ [graphql/graphiql](https://github.com/graphql/graphiql)       
 
-* **Kafka**
- 
-  ↳ [segment-integrations/connect-kafka](https://github.com/segment-integrations/connect-kafka)
+-   **GraphQL**
 
-* **Redis**
+    ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go)
 
-  ↳ [robinjoseph08/redisqueue](https://github.com/robinjoseph08/redisqueue)
+    ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) 
 
-* **Expression language**
- 
-  ↳ [antonmedv/expr]
+    ↳ [graphql/graphiql](https://github.com/graphql/graphiql)       
 
-* **Design Patterns**
+-   **Kafka**
 
-  ↳ [ReactiveX/RxGo v2](https://github.com/ReactiveX/RxGo/tree/v2)
+    ↳ [segment-integrations/connect-kafka](https://github.com/segment-integrations/connect-kafka)
 
-* **CLI**
- 
-  ↳ [spf13/cobra](https://github.com/spf13/cobra)  
+-   **Redis**
 
-* **Log** 
+    ↳ [robinjoseph08/redisqueue](https://github.com/robinjoseph08/redisqueue)
 
-  ↳ [rs/zerolog](https://github.com/rs/zerolog)  
+-   **Expression language**
+
+    ↳ [antonmedv/expr]
+
+-   **Design Patterns**
+
+    ↳ [ReactiveX/RxGo v2](https://github.com/ReactiveX/RxGo/tree/v2)
+
+-   **CLI**
+
+    ↳ [spf13/cobra](https://github.com/spf13/cobra)  
+
+-   **Log** 
+
+    ↳ [rs/zerolog](https://github.com/rs/zerolog)  
 
 ### Project
 
-* **Build**
+-   **Build**
 
-  ↳ [make](https://www.gnu.org/software/make/)
+    ↳ [make](https://www.gnu.org/software/make/)
 
-* **Linter**  
+-   **Linter**  
 
-  ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
-
-
+    ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
 
 ## License
 
@@ -269,4 +267,5 @@ This application mainly uses:
 [![fossa-status-large](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_large)
 
 [antonmedv/expr]: https://github.com/antonmedv/expr
+
 [graphQL]: https://graphql.org/
