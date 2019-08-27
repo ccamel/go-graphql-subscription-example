@@ -14,7 +14,7 @@ require (
 	github.com/robinjoseph08/redisqueue v1.0.1
 	github.com/rs/zerolog v1.15.0
 	github.com/satori/go.uuid v1.2.0
-	github.com/segmentio/kafka-go v0.3.2
+	github.com/segmentio/kafka-go v0.3.3
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/objx v0.2.0 // indirect
 	golang.org/x/net v0.0.0-20190813215801-74dc4d7220e7 // indirect
