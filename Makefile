@@ -13,7 +13,7 @@ install-tools:
 	fi
 	@if [ ! -f $(GOPATH)/bin/golangci-lint ]; then \
 		echo "installing golangci-lint..."; \
-		curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(GOPATH)/bin v1.17.1; \
+		curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(GOPATH)/bin v1.18.0; \
 	fi
 
 install-deps:
