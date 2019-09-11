@@ -7,7 +7,7 @@ require (
 	github.com/go-redis/redis v6.15.5+incompatible
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20190902214650-641ae197eec7
-	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190807123738-40c048432299
+	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190611222414-40c048432299
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/reactivex/rxgo v1.0.0
