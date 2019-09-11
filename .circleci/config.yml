@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.12.9
+      - image: circleci/golang:1.13.0
 
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
 
