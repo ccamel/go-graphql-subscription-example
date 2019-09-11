@@ -9,6 +9,10 @@ output:
   print-issued-lines: true
   print-linter-name: true
 
+linters-settings:
+  funlen:
+    lines: 76
+
 linters:
   enable-all: true
   disable:
