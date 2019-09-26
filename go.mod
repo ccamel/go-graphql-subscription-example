@@ -17,6 +17,6 @@ require (
 	github.com/segmentio/kafka-go v0.3.3
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/objx v0.2.0 // indirect
-	golang.org/x/net v0.0.0-20190923162816-aa69164e4478 // indirect
+	golang.org/x/net v0.0.0-20190926025831-c00fd9afed17 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 )
