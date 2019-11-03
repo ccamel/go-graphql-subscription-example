@@ -12,7 +12,7 @@ require (
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/reactivex/rxgo v1.0.0
 	github.com/robinjoseph08/redisqueue v1.0.1
-	github.com/rs/zerolog v1.15.0
+	github.com/rs/zerolog v1.16.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.3.4
 	github.com/spf13/cobra v0.0.5
