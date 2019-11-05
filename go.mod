@@ -8,7 +8,7 @@ require (
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20191031232829-adde0d0f76a3
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190611222414-40c048432299
-	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
+	github.com/justinas/alice v0.0.0-20191105135612-698d69461945
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/reactivex/rxgo v1.0.0
 	github.com/robinjoseph08/redisqueue v1.0.1
