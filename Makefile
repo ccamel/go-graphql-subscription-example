@@ -29,6 +29,9 @@ gen-static: install-tools
 check: install-tools
 	golangci-lint run ./...
 
+thanks: install-tools
+	$(GOPATH)/bin/gothanks -y | grep -v "is already"
+
 build:
 	go build .
 
