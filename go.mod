@@ -10,12 +10,11 @@ require (
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190611222414-40c048432299
 	github.com/justinas/alice v1.2.0
 	github.com/kr/pretty v0.1.0 // indirect
-	github.com/mjibson/esc v0.2.0 // indirect
 	github.com/reactivex/rxgo v1.0.0
 	github.com/robinjoseph08/redisqueue v1.0.1
 	github.com/rs/zerolog v1.17.2
 	github.com/satori/go.uuid v1.2.0
-	github.com/segmentio/kafka-go v0.3.4
+	github.com/segmentio/kafka-go v0.3.5
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/objx v0.2.0 // indirect
 	golang.org/x/net v0.0.0-20191011234655-491137f69257 // indirect
