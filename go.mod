@@ -6,7 +6,7 @@ require (
 	github.com/antonmedv/expr v1.7.1
 	github.com/go-redis/redis v6.15.2+incompatible
 	github.com/golang/protobuf v1.3.2 // indirect
-	github.com/graph-gophers/graphql-go v0.0.0-20200207002730-8334863f2c8b
+	github.com/graph-gophers/graphql-go v0.0.0-20200309224638-dae41bde9ef9
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190611222414-40c048432299
 	github.com/justinas/alice v1.2.0
 	github.com/onsi/ginkgo v1.10.1 // indirect
