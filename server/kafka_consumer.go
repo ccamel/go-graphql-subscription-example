@@ -8,8 +8,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/reactivex/rxgo/observable"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/reactivex/rxgo/v2"
 	"github.com/rs/zerolog"
 
 	uuid "github.com/satori/go.uuid"
@@ -46,7 +45,7 @@ func newKafkaSource(uri *url.URL) (Source, error) {
 	}, nil
 }
 
-func (s kafkaSource) NewConsumer(ctx context.Context, topic string, offset int64) observable.Observable {
+func (s kafkaSource) NewConsumer(ctx context.Context, topic string, offset int64) rxgo.Observable {
 	id := uuid.NewV4()
 
 	c := kafkaConsumer{
@@ -91,11 +90,9 @@ func unmarshalKafkaMessage(c kafkaConsumer, m kafka.Message) (map[string]interfa
 	return v, true
 }
 
-func makeObservableFromKafkaConsumer(c kafkaConsumer) observable.Observable {
-	return observable.Create(func(emitter *observer.Observer, disposed bool) {
+func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
+	return rxgo.Create([]rxgo.Producer{func(ctx context.Context, next chan<- rxgo.Item) {
 		defer func() {
-			emitter.OnDone()
-
 			c.log.
 				Info().
 				Msg("⛔ Consumer stopped")
@@ -123,7 +120,7 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) observable.Observable {
 				Int64("offset", c.offset).
 				Msg("Error when setting offset")
 
-			emitter.OnError(err)
+			next <- rxgo.Error(err)
 
 			return
 		}
@@ -156,9 +153,9 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) observable.Observable {
 				Object("message", KafkaMessageAsZerologObject(m)).
 				Msg("↩️ Sending message to subscriber")
 
-			emitter.OnNext(v)
+			next <- rxgo.Of(v)
 		}
-	})
+	}}, rxgo.WithContext(c.ctx))
 }
 
 // nolint:gochecknoinits

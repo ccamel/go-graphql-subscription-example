@@ -6,9 +6,6 @@ import (
 	"net/url"
 
 	"github.com/antonmedv/expr"
-	"github.com/reactivex/rxgo/handlers"
-	"github.com/reactivex/rxgo/observer"
-
 	"github.com/rs/zerolog"
 
 	"github.com/ccamel/go-graphql-subscription-example/server/scalar"
@@ -47,10 +44,10 @@ func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
 func (r *Resolver) Event(
 	ctx context.Context,
 	args *struct {
-		On       string
-		At       scalar.Offset
-		Matching *string
-	}) (<-chan *scalar.JSONObject, error) {
+	On       string
+	At       scalar.Offset
+	Matching *string
+}) (<-chan *scalar.JSONObject, error) {
 	if !acceptTopic(args.On, r.cfg.Topics) {
 		return nil, fmt.Errorf("unknown topic: '%s'. Valid topics are: %v", args.On, r.cfg.Topics)
 	}
@@ -62,18 +59,12 @@ func (r *Resolver) Event(
 		Filter(func(i interface{}) bool {
 			return r.acceptMessage(i.(map[string]interface{}), args.Matching)
 		}).
-		Map(func(i interface{}) interface{} {
-			return scalar.NewJSONObject(i.(map[string]interface{}))
+		Map(func(_ context.Context, i interface{}) (interface{}, error) {
+			return scalar.NewJSONObject(i.(map[string]interface{})), nil
 		}).
-		Subscribe(
-			observer.New(
-				handlers.NextFunc(func(item interface{}) {
-					c <- item.(*scalar.JSONObject)
-				}),
-				handlers.DoneFunc(func() {
-					close(c)
-				}),
-			))
+		DoOnNext(func(i interface{}) {
+			c <- i.(*scalar.JSONObject)
+		})
 
 	return c, nil
 }

@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/reactivex/rxgo/observable"
+	"github.com/reactivex/rxgo/v2"
 )
 
 // Source specifies types which are able to provide a source of events through an Observable.
@@ -14,7 +14,7 @@ type Source interface {
 	URI() *url.URL
 	// NewConsumer returns a new observable consuming messages from the this source, from a topic, starting
 	// at provided offset (if supported).
-	NewConsumer(ctx context.Context, topic string, offset int64) observable.Observable
+	NewConsumer(ctx context.Context, topic string, offset int64) rxgo.Observable
 }
 
 type SourceFactory func(uri *url.URL) (Source, error)

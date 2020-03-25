@@ -6,8 +6,7 @@ import (
 	"time"
 
 	"github.com/go-redis/redis"
-	"github.com/reactivex/rxgo/observable"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/reactivex/rxgo/v2"
 	"github.com/robinjoseph08/redisqueue"
 	"github.com/rs/zerolog"
 
@@ -36,7 +35,7 @@ func newRedisSource(uri *url.URL) (Source, error) {
 	}, nil
 }
 
-func (s redisSource) NewConsumer(ctx context.Context, topic string, offset int64) observable.Observable {
+func (s redisSource) NewConsumer(ctx context.Context, topic string, offset int64) rxgo.Observable {
 	id := uuid.NewV4()
 
 	l := zerolog.
@@ -47,10 +46,8 @@ func (s redisSource) NewConsumer(ctx context.Context, topic string, offset int64
 
 	c, errored := redisqueue.NewConsumerWithOptions(s.consumerOptions)
 
-	return observable.Create(func(emitter *observer.Observer, disposed bool) {
+	return rxgo.Create([]rxgo.Producer{func(ctx context.Context, next chan<- rxgo.Item) {
 		defer func() {
-			emitter.OnDone()
-
 			l.
 				Info().
 				Msg("⛔ Consumer stopped")
@@ -68,7 +65,7 @@ func (s redisSource) NewConsumer(ctx context.Context, topic string, offset int64
 				Err(errored).
 				Msg("Error when connecting to redis server")
 
-			emitter.OnError(errored)
+			next <- rxgo.Error(errored)
 
 			return
 		}
@@ -81,7 +78,7 @@ func (s redisSource) NewConsumer(ctx context.Context, topic string, offset int64
 					Dict("message", zerolog.Dict().Fields(v)).
 					Msg("↩️ Sending message to subscriber")
 
-				emitter.OnNext(v)
+				next <- rxgo.Of(v)
 			}
 
 			return nil
@@ -93,7 +90,7 @@ func (s redisSource) NewConsumer(ctx context.Context, topic string, offset int64
 		}()
 
 		c.Run()
-	})
+	}}, rxgo.WithContext(ctx))
 }
 
 // nolint:unparam
