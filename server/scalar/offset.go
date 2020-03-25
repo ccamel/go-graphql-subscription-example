@@ -34,9 +34,11 @@ func (t *Offset) UnmarshalGraphQL(input interface{}) error {
 		v, success := new(big.Int).SetString(v.String(), 10)
 
 		t.v = v
+
 		if !success {
 			return fmt.Errorf("error converting: %s", input)
 		}
+
 		return nil
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		t.v = new(big.Int).SetInt64(v.Int())
