@@ -44,13 +44,14 @@ func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
 func (r *Resolver) Event(
 	ctx context.Context,
 	args *struct {
-	On       string
-	At       scalar.Offset
-	Matching *string
-}) (<-chan *scalar.JSONObject, error) {
+		On       string
+		At       scalar.Offset
+		Matching *string
+	}) (<-chan *scalar.JSONObject, error) {
 	if !acceptTopic(args.On, r.cfg.Topics) {
 		return nil, fmt.Errorf("unknown topic: '%s'. Valid topics are: %v", args.On, r.cfg.Topics)
 	}
+
 	c := make(chan *scalar.JSONObject)
 
 	ctx = r.log.WithContext(ctx)
@@ -79,6 +80,7 @@ func acceptTopic(topic string, topics []string) bool {
 			return true
 		}
 	}
+
 	return false
 }
 
@@ -95,6 +97,7 @@ func (r *Resolver) acceptMessage(m map[string]interface{}, predicate *string) bo
 			Object("message", MapAsZerologObject(m)).
 			Err(err).
 			Msg("⚱️ Failed to filter (message will be dropped)")
+
 		return false
 	}
 
@@ -107,6 +110,7 @@ func (r *Resolver) acceptMessage(m map[string]interface{}, predicate *string) bo
 			Object("message", MapAsZerologObject(m)).
 			Err(fmt.Errorf("incorrect type: %t returned. Expected boolean", out)).
 			Msg("⚱️ Failed to filter (message will be dropped)")
+
 		return false
 	}
 }

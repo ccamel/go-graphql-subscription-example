@@ -87,6 +87,7 @@ func unmarshalKafkaMessage(c kafkaConsumer, m kafka.Message) (map[string]interfa
 
 		return nil, false
 	}
+
 	return v, true
 }
 

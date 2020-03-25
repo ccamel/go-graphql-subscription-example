@@ -39,9 +39,11 @@ func NewSource(uri *url.URL) (Source, error) {
 	keys := make([]string, len(sourceFactories))
 
 	i := 0
+
 	for k := range sourceFactories {
 		keys[i] = k
 		i++
 	}
+
 	return nil, fmt.Errorf("scheme %s is not supported. Available are: ", strings.Join(keys, ","))
 }
