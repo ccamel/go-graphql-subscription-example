@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"time"
 
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/rs/zerolog"
 
 	"github.com/ccamel/go-graphql-subscription-example/static"
@@ -16,6 +17,8 @@ import (
 	"github.com/graph-gophers/graphql-transport-ws/graphqlws"
 	"github.com/justinas/alice"
 	"github.com/rs/zerolog/hlog"
+
+	_ "github.com/ccamel/go-graphql-subscription-example/server/consumer"
 )
 
 type Server struct {
@@ -26,7 +29,7 @@ type Server struct {
 func NewServer(cfg *Configuration) *Server {
 	return &Server{
 		cfg,
-		NewLogger(),
+		log.NewLogger(),
 	}
 }
 

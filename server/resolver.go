@@ -7,6 +7,7 @@ import (
 	"net/url"
 
 	"github.com/antonmedv/expr"
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/ccamel/go-graphql-subscription-example/server/source"
 	"github.com/rs/zerolog"
 
@@ -101,7 +102,7 @@ func (r *Resolver) acceptMessage(m map[string]interface{}, predicate *string) bo
 	if err != nil {
 		r.log.
 			Warn().
-			Object("message", MapAsZerologObject(m)).
+			Object("message", log.MapAsZerologObject(m)).
 			Err(err).
 			Msg("⚱️ Failed to filter (message will be dropped)")
 
@@ -114,7 +115,7 @@ func (r *Resolver) acceptMessage(m map[string]interface{}, predicate *string) bo
 	default:
 		r.log.
 			Warn().
-			Object("message", MapAsZerologObject(m)).
+			Object("message", log.MapAsZerologObject(m)).
 			Err(fmt.Errorf("incorrect type %t returned - expected boolean: %w", out, ErrUnmarshall)).
 			Msg("⚱️ Failed to filter (message will be dropped)")
 
