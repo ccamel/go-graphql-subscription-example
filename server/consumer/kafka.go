@@ -168,5 +168,5 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 
 // nolint:gochecknoinits
 func init() {
-	source.RegisterSourceFactory("kafka", newKafkaSource)
+	source.RegisterFactory("kafka", newKafkaSource)
 }

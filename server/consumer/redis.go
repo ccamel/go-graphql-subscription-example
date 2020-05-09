@@ -125,5 +125,5 @@ func unmarshalRedisMessage(m *redisqueue.Message) (map[string]interface{}, bool)
 
 // nolint:gochecknoinits
 func init() {
-	source.RegisterSourceFactory("redis", newRedisSource)
+	source.RegisterFactory("redis", newRedisSource)
 }

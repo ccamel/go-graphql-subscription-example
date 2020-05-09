@@ -22,19 +22,21 @@ type Source interface {
 	NewConsumer(ctx context.Context, topic string, offset int64) rxgo.Observable
 }
 
-type SourceFactory func(uri *url.URL) (Source, error)
+// Factory specifies functions able to create sources from an URI.
+type Factory func(uri *url.URL) (Source, error)
 
+// sourceFactories constains all the registered source factories.
 // nolint:gochecknoglobals
-var sourceFactories = make(map[string]SourceFactory)
+var sourceFactories = make(map[string]Factory)
 
-// RegisterSourceFactory registers a new source factory for the considered scheme.
-func RegisterSourceFactory(scheme string, factory SourceFactory) {
+// RegisterFactory registers a new source factory for the considered scheme.
+func RegisterFactory(scheme string, factory Factory) {
 	sourceFactories[scheme] = factory
 }
 
-// NewSource returns a new instance of source given the uri.
+// New returns a new instance of source given the uri.
 // The uri contains all the required information to perform a connection to the source endpoint.
-func NewSource(uri *url.URL) (Source, error) {
+func New(uri *url.URL) (Source, error) {
 	for scheme, factory := range sourceFactories {
 		if uri.Scheme == scheme {
 			return factory(uri)

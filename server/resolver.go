@@ -31,7 +31,7 @@ func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
 		return nil, err
 	}
 
-	src, err := source.NewSource(sourceURI)
+	src, err := source.New(sourceURI)
 	if err != nil {
 		return nil, err
 	}
