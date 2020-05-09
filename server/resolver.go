@@ -7,6 +7,7 @@ import (
 	"net/url"
 
 	"github.com/antonmedv/expr"
+	"github.com/ccamel/go-graphql-subscription-example/server/source"
 	"github.com/rs/zerolog"
 
 	"github.com/ccamel/go-graphql-subscription-example/server/scalar"
@@ -21,7 +22,7 @@ type Resolver struct {
 	log zerolog.Logger
 	cfg *Configuration
 
-	source Source
+	source source.Source
 }
 
 func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
@@ -30,20 +31,20 @@ func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
 		return nil, err
 	}
 
-	source, err := NewSource(sourceURI)
+	src, err := source.NewSource(sourceURI)
 	if err != nil {
 		return nil, err
 	}
 
 	log.
 		Info().
-		Str("source", source.URI().String()).
-		Msgf("Source '%s' configured", source.URI().Scheme)
+		Str("source", src.URI().String()).
+		Msgf("Source '%s' configured", src.URI().Scheme)
 
 	return &Resolver{
 		log,
 		cfg,
-		source,
+		src,
 	}, nil
 }
 

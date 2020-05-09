@@ -1,4 +1,4 @@
-package server
+package consumer
 
 import (
 	"context"
@@ -9,6 +9,8 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/ccamel/go-graphql-subscription-example/server"
+	"github.com/ccamel/go-graphql-subscription-example/server/source"
 	"github.com/reactivex/rxgo/v2"
 	"github.com/rs/zerolog"
 
@@ -38,7 +40,7 @@ type kafkaConsumer struct {
 	log        zerolog.Logger
 }
 
-func newKafkaSource(uri *url.URL) (Source, error) {
+func newKafkaSource(uri *url.URL) (source.Source, error) {
 	brokers, err := parseKafkaBrokers(uri)
 	if err != nil {
 		return nil, err
@@ -86,7 +88,7 @@ func unmarshalKafkaMessage(c kafkaConsumer, m kafka.Message) (map[string]interfa
 	if err := json.Unmarshal(m.Value, &v); err != nil {
 		c.log.
 			Warn().
-			Object("message", KafkaMessageAsZerologObject(m)).
+			Object("message", server.KafkaMessageAsZerologObject(m)).
 			Err(err).
 			Msg("⚱️ Failed to unmarshal message (message will be dropped)")
 
@@ -156,7 +158,7 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 
 			c.log.
 				Info().
-				Object("message", KafkaMessageAsZerologObject(m)).
+				Object("message", server.KafkaMessageAsZerologObject(m)).
 				Msg("↩️ Sending message to subscriber")
 
 			next <- rxgo.Of(v)
@@ -166,5 +168,5 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 
 // nolint:gochecknoinits
 func init() {
-	RegisterSourceFactory("kafka", newKafkaSource)
+	source.RegisterSourceFactory("kafka", newKafkaSource)
 }
