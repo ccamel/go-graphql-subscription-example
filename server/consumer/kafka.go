@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/ccamel/go-graphql-subscription-example/server"
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/ccamel/go-graphql-subscription-example/server/source"
 	"github.com/reactivex/rxgo/v2"
 	"github.com/rs/zerolog"
@@ -71,6 +71,17 @@ func (s kafkaSource) NewConsumer(ctx context.Context, topic string, offset int64
 	return makeObservableFromKafkaConsumer(c)
 }
 
+// AsEventTraitZerologObject converts a kafka message into a LogObjectMarshaler.
+func KafkaMessageAsZerologObject(message kafka.Message) log.LoggerFunc {
+	return func(e *zerolog.Event) {
+		e.
+			Str("topic", message.Topic).
+			Int64("offset", message.Offset).
+			Time("time", message.Time).
+			Int("size", len(message.Value))
+	}
+}
+
 func parseKafkaBrokers(source *url.URL) ([]string, error) {
 	brokersStr := source.Query().Get("brokers")
 
@@ -88,7 +99,7 @@ func unmarshalKafkaMessage(c kafkaConsumer, m kafka.Message) (map[string]interfa
 	if err := json.Unmarshal(m.Value, &v); err != nil {
 		c.log.
 			Warn().
-			Object("message", server.KafkaMessageAsZerologObject(m)).
+			Object("message", KafkaMessageAsZerologObject(m)).
 			Err(err).
 			Msg("⚱️ Failed to unmarshal message (message will be dropped)")
 
@@ -158,7 +169,7 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 
 			c.log.
 				Info().
-				Object("message", server.KafkaMessageAsZerologObject(m)).
+				Object("message", KafkaMessageAsZerologObject(m)).
 				Msg("↩️ Sending message to subscriber")
 
 			next <- rxgo.Of(v)
