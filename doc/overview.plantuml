@@ -1,0 +1,66 @@
+@startuml overview
+!include <tupadr3/common>
+!include <tupadr3/govicons/world.puml>
+!include <tupadr3/devicons/go.puml>
+!include <tupadr3/devicons/redis.puml>
+!includeurl https://raw.githubusercontent.com/nikolay-martynov/eip-for-plantuml/master/dist/eip-for-plantuml.puml
+!include <cloudinsight/kafka>
+
+skinparam handwritten true
+skinparam defaultTextAlignment center
+skinparam rectangle {
+    BackgroundColor<<srv>> #f7f4ea
+    BorderColor<<srv>> #1d2d44
+    FontColor<<srv>> #000000
+    BorderThickness<<srv>> 3
+    BackgroundColor<<client>> #ded9e2
+    FontColor<<client>> #000000
+    BackgroundColor<<mod>> #BAC8D3
+    BackgroundColor<<hidden>> #ffffff
+    BorderThickness<<hidden>> 0
+    BorderColor<<hidden>> #ffffff
+    Shadowing<<hidden>> false
+}
+skinparam ArrowFontName Courier
+skinparam ArrowFontSize 10
+
+skinparam interface {
+    FontName<<graphQL>> Courier
+    FontSize<<graphQL>> 8
+    FontColor #DFE1E5
+}
+
+hide stereotype
+
+rectangle "<$world>\n\nclient" << client >> as client {
+
+}
+
+rectangle "<$go>\n\ngraphQL\ngo server" << srv >> as srv {
+    rectangle Query << mod >>
+    rectangle Subscription << mod >>
+
+    Query --[hidden] Subscription
+}
+
+() "graphQL" as IQuery << graphQL >>
+() "graphQL" as ISubscription << graphQL >>
+
+IQuery --[hidden] ISubscription
+
+Query ---left- IQuery
+Subscription ---left- ISubscription
+
+client --right-( IQuery : list\ntopics
+client --right-( ISubscription : subscribe \n
+
+rectangle "<$kafka>Kafka\n<$EIP_MessageChannel>" as Kafka <<hidden>>
+rectangle "<$redis>Redis\n<$EIP_MessageChannel>" as Redis <<hidden>>
+
+Subscription --> Kafka
+Kafka ...> Subscription
+
+Subscription --> Redis
+Redis ...> Subscription
+
+@enduml
