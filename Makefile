@@ -11,9 +11,9 @@ install-tools:
 		echo "installing esc..."; \
 		go get -u github.com/mjibson/esc; \
 	fi
-	@if [ ! -f $(GOPATH)/bin/golangci-lint ]; then \
+	@if [ ! -f ./bin/golangci-lint ]; then \
 		echo "installing golangci-lint..."; \
-		curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(GOPATH)/bin v1.18.0; \
+		curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.18.0; \
 	fi
 	@if [ ! -f $(GOPATH)/bin/gothanks ]; then \
 		echo "installing gothanks..."; \
@@ -27,7 +27,7 @@ gen-static: install-tools
 	go generate main.go
 
 check: install-tools
-	golangci-lint run ./...
+	./bin/golangci-lint run ./...
 
 thanks: install-tools
 	$(GOPATH)/bin/gothanks -y | grep -v "is already"
