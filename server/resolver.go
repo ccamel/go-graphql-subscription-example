@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/url"
 
@@ -9,6 +10,11 @@ import (
 	"github.com/rs/zerolog"
 
 	"github.com/ccamel/go-graphql-subscription-example/server/scalar"
+)
+
+var (
+	ErrUnknownTopic = errors.New("unknown topic")
+	ErrUnmarshall   = errors.New("unmarshall error")
 )
 
 type Resolver struct {
@@ -49,7 +55,7 @@ func (r *Resolver) Event(
 		Matching *string
 	}) (<-chan *scalar.JSONObject, error) {
 	if !acceptTopic(args.On, r.cfg.Topics) {
-		return nil, fmt.Errorf("unknown topic: '%s'. Valid topics are: %v", args.On, r.cfg.Topics)
+		return nil, fmt.Errorf("incorrect topic '%s' (valid topics are: %v): %w", args.On, r.cfg.Topics, ErrUnknownTopic)
 	}
 
 	c := make(chan *scalar.JSONObject)
@@ -108,7 +114,7 @@ func (r *Resolver) acceptMessage(m map[string]interface{}, predicate *string) bo
 		r.log.
 			Warn().
 			Object("message", MapAsZerologObject(m)).
-			Err(fmt.Errorf("incorrect type: %t returned. Expected boolean", out)).
+			Err(fmt.Errorf("incorrect type %t returned - expected boolean: %w", out, ErrUnmarshall)).
 			Msg("⚱️ Failed to filter (message will be dropped)")
 
 		return false

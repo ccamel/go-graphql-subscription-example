@@ -36,7 +36,7 @@ func (t *Offset) UnmarshalGraphQL(input interface{}) error {
 		t.v = v
 
 		if !success {
-			return fmt.Errorf("error converting: %s", input)
+			return fmt.Errorf("conversion of %s: %w", input, ErrUnmarshall)
 		}
 
 		return nil
@@ -47,7 +47,7 @@ func (t *Offset) UnmarshalGraphQL(input interface{}) error {
 		t.v = new(big.Int).SetUint64(v.Uint())
 		return nil
 	default:
-		return fmt.Errorf("wrong type")
+		return fmt.Errorf("type %T: %w", input, ErrUnmarshall)
 	}
 }
 

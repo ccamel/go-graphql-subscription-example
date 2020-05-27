@@ -2,11 +2,16 @@ package server
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/url"
 	"strings"
 
 	"github.com/reactivex/rxgo/v2"
+)
+
+var (
+	ErrIncorrectScheme = errors.New("incorrect scheme")
 )
 
 // Source specifies types which are able to provide a source of events through an Observable.
@@ -45,5 +50,6 @@ func NewSource(uri *url.URL) (Source, error) {
 		i++
 	}
 
-	return nil, fmt.Errorf("scheme %s is not supported. Available are: ", strings.Join(keys, ","))
+	return nil, fmt.Errorf("scheme %s is not supported (available are: %s): %w",
+		uri.Scheme, strings.Join(keys, ","), ErrIncorrectScheme)
 }

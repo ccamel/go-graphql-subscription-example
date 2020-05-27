@@ -1,6 +1,7 @@
 package server
 
 import (
+	"errors"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -49,7 +50,7 @@ func (s *Server) Start() {
 		Uint16("port", s.cfg.Port).
 		Msg("Ready to handle requests")
 
-	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+	if err := server.ListenAndServe(); err != nil && errors.Is(err, http.ErrServerClosed) {
 		s.log.
 			Error().
 			Err(err).
