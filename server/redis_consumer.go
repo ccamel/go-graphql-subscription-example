@@ -5,9 +5,8 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/go-redis/redis"
 	"github.com/reactivex/rxgo/v2"
-	"github.com/robinjoseph08/redisqueue"
+	"github.com/robinjoseph08/redisqueue/v2"
 	"github.com/rs/zerolog"
 
 	uuid "github.com/satori/go.uuid"
@@ -101,7 +100,7 @@ func makeRedisOptions(source *url.URL) (*redisqueue.ConsumerOptions, error) {
 		ReclaimInterval:   1 * time.Second,
 		BufferSize:        100,
 		Concurrency:       10,
-		RedisOptions: &redis.Options{
+		RedisOptions: &redisqueue.RedisOptions{
 			Addr: ":6379",
 		},
 	}
