@@ -12,7 +12,7 @@ require (
 	github.com/onsi/ginkgo v1.10.1 // indirect
 	github.com/onsi/gomega v1.7.0 // indirect
 	github.com/reactivex/rxgo/v2 v2.1.0
-	github.com/robinjoseph08/redisqueue v1.0.1
+	github.com/robinjoseph08/redisqueue v1.1.0
 	github.com/rs/zerolog v1.18.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.3.6
