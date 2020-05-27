@@ -1,6 +1,6 @@
 module github.com/ccamel/go-graphql-subscription-example
 
-go 1.12
+go 1.14
 
 require (
 	github.com/antonmedv/expr v1.8.8
@@ -14,6 +14,5 @@ require (
 	github.com/segmentio/kafka-go v0.3.6
 	github.com/spf13/cobra v1.0.0
 	github.com/stretchr/objx v0.2.0 // indirect
-	golang.org/x/net v0.0.0-20191011234655-491137f69257 // indirect
-	golang.org/x/tools v0.0.0-20191124021906-f5828fc9a103 // indirect
+	golang.org/x/tools v0.0.0-20200526224456-8b020aee10d2 // indirect
 )

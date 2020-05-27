@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/url"
@@ -13,6 +14,10 @@ import (
 
 	uuid "github.com/satori/go.uuid"
 	"github.com/segmentio/kafka-go"
+)
+
+var (
+	ErrNoBrokerSpecified = errors.New("no broker specified")
 )
 
 type kafkaSource struct {
@@ -68,7 +73,7 @@ func parseKafkaBrokers(source *url.URL) ([]string, error) {
 	brokersStr := source.Query().Get("brokers")
 
 	if brokersStr == "" {
-		return nil, fmt.Errorf("no brokers specified")
+		return nil, fmt.Errorf("incorrect source URL %s: %w", source.String(), ErrNoBrokerSpecified)
 	}
 
 	return strings.Split(brokersStr, ","), nil

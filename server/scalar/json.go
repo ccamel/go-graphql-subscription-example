@@ -23,21 +23,21 @@ func (JSONObject) ImplementsGraphQLType(name string) bool {
 // UnmarshalGraphQL is a custom unmarshaler for JSONObject
 //
 // This function will be called whenever you use the
-// JSONObject scalar as an input
+// JSONObject scalar as an input.
 func (t *JSONObject) UnmarshalGraphQL(input interface{}) error {
 	switch input := input.(type) {
 	case map[string]interface{}:
 		t.v = input
 		return nil
 	default:
-		return fmt.Errorf("wrong type")
+		return fmt.Errorf("type %T: %w", input, ErrUnmarshall)
 	}
 }
 
 // MarshalJSON is a custom marshaler for JSONObject
 //
 // This function will be called whenever you
-// query for fields that use the JSONObject type
+// query for fields that use the JSONObject type.
 func (t JSONObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(t.v)
 }

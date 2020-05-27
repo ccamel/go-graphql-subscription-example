@@ -17,5 +17,6 @@ linters:
   enable-all: true
   disable:
     - lll
+    - gomnd
   fast: false
 
