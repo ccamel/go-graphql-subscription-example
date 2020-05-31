@@ -71,7 +71,7 @@ func (s kafkaSource) NewConsumer(ctx context.Context, topic string, offset int64
 	return makeObservableFromKafkaConsumer(c)
 }
 
-// AsEventTraitZerologObject converts a kafka message into a LogObjectMarshaler.
+// KafkaMessageAsZerologObject converts a kafka message into a LogObjectMarshaler.
 func KafkaMessageAsZerologObject(message kafka.Message) log.LoggerFunc {
 	return func(e *zerolog.Event) {
 		e.
