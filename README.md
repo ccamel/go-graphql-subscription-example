@@ -175,7 +175,7 @@ The message should be displayed on the browser.
 
 At first, a redis server (at least v5.0) must be started. See [official documentation](https://redis.io/download) for more.
 
-### 3. Start the GraphQL server
+### 2. Start the GraphQL server
 
 Run the application which exposes the 2 previously created topics to subscribers: 
 
@@ -189,7 +189,7 @@ Alternately, if the docker image has been previously built, the container can be
 > docker run -ti --rm -p 8000:8000 ccamel/go-graphql-subscription-example --source redis://6379?name=foo --topics topic-a,topic-b
 ```
 
-### 4. Subscribe
+### 3. Subscribe
 
 The application exposes a graphql endpoint through which clients can receive messages coming from a redis stream.
 
@@ -213,7 +213,7 @@ subscription {
 }
 ```
 
-### 5. Push messages
+### 4. Push messages
 
 Start the `redis-cli` and then use the `XADD` command to send the messages to the Redis stream.
 
@@ -230,7 +230,7 @@ The message should be displayed on the browser.
 
 ### 1. Start NSQ
 
-At first,NSQ must be started. See [official documentation](https://nsq.io/overview/quick_start.html) for more.
+At first, NSQ must be started. See [official documentation](https://nsq.io/overview/quick_start.html) for more.
 
 ```sh
 > nsqlookupd
@@ -238,7 +238,7 @@ At first,NSQ must be started. See [official documentation](https://nsq.io/overvi
 > nsqadmin --lookupd-http-address=127.0.0.1:4161
 ```
 
-### 3. Start the GraphQL server
+### 2. Start the GraphQL server
 
 Run the application which exposes the 2 previously created topics to subscribers: 
 
@@ -252,7 +252,7 @@ Alternately, if the docker image has been previously built, the container can be
 > docker run -ti --rm -p 8000:8000 ccamel/go-graphql-subscription-example --source nsq: --topics topic-a,topic-b
 ```
 
-### 4. Subscribe
+### 3. Subscribe
 
 The application exposes a graphql endpoint through which clients can receive messages coming from a redis stream.
 
@@ -276,7 +276,7 @@ subscription {
 }
 ```
 
-### 5. Push messages
+### 4. Push messages
 
 Publish a message to the topic `topic-a` by using the command line below:
 
