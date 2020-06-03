@@ -6,19 +6,7 @@ GO111MODULE=on
 
 default: build
 
-install-tools:
-	@if [ ! -f $(GOPATH)/bin/esc ]; then \
-		echo "installing esc..."; \
-		go get -u github.com/mjibson/esc; \
-	fi
-	@if [ ! -f ./bin/golangci-lint ]; then \
-		echo "installing golangci-lint..."; \
-		curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0; \
-	fi
-	@if [ ! -f $(GOPATH)/bin/gothanks ]; then \
-		echo "installing gothanks..."; \
-		go get -u github.com/psampaz/gothanks; \
-	fi
+install-tools: ./bin/golangci-lint $(GOPATH)/bin/esc $(GOPATH)/bin/gothanks
 
 install-deps:
 	go get .
@@ -40,3 +28,15 @@ build-linux-amd64:
 
 dockerize:
 	docker build -t ccamel/go-graphql-subscription-example .
+
+$(GOPATH)/bin/gothanks:
+	@echo "installing $(notdir $@)"
+	go get -u github.com/psampaz/gothanks
+
+$(GOPATH)/bin/esc:
+	@echo "installing $(notdir $@)"
+	go get -u github.com/mjibson/esc
+
+./bin/golangci-lint:
+	@echo "installing $(notdir $@)"
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
