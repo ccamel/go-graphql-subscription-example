@@ -1,6 +1,6 @@
 .EXPORT_ALL_VARIABLES:
 
-.PHONY: tools install-deps gen-static check build
+.PHONY: tools deps gen-static check build
 
 GO111MODULE=on
 
@@ -8,7 +8,7 @@ default: build
 
 tools: ./bin/golangci-lint $(GOPATH)/bin/esc $(GOPATH)/bin/gothanks
 
-install-deps:
+deps:
 	go get .
 
 gen-static: tools
