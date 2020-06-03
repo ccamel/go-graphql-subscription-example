@@ -1,23 +1,23 @@
 .EXPORT_ALL_VARIABLES:
 
-.PHONY: install-tools install-deps gen-static check build
+.PHONY: tools install-deps gen-static check build
 
 GO111MODULE=on
 
 default: build
 
-install-tools: ./bin/golangci-lint $(GOPATH)/bin/esc $(GOPATH)/bin/gothanks
+tools: ./bin/golangci-lint $(GOPATH)/bin/esc $(GOPATH)/bin/gothanks
 
 install-deps:
 	go get .
 
-gen-static: install-tools
+gen-static: tools
 	go generate main.go
 
-check: install-tools
+check: tools
 	./bin/golangci-lint run ./...
 
-thanks: install-tools
+thanks: tools
 	$(GOPATH)/bin/gothanks -y | grep -v "is already"
 
 build:
