@@ -1,4 +1,4 @@
-package server
+package consumer
 
 import (
 	"context"
@@ -9,6 +9,8 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
+	"github.com/ccamel/go-graphql-subscription-example/server/source"
 	"github.com/reactivex/rxgo/v2"
 	"github.com/rs/zerolog"
 
@@ -38,7 +40,7 @@ type kafkaConsumer struct {
 	log        zerolog.Logger
 }
 
-func newKafkaSource(uri *url.URL) (Source, error) {
+func newKafkaSource(uri *url.URL) (source.Source, error) {
 	brokers, err := parseKafkaBrokers(uri)
 	if err != nil {
 		return nil, err
@@ -67,6 +69,17 @@ func (s kafkaSource) NewConsumer(ctx context.Context, topic string, offset int64
 	}
 
 	return makeObservableFromKafkaConsumer(c)
+}
+
+// KafkaMessageAsZerologObject converts a kafka message into a LogObjectMarshaler.
+func KafkaMessageAsZerologObject(message kafka.Message) log.LoggerFunc {
+	return func(e *zerolog.Event) {
+		e.
+			Str("topic", message.Topic).
+			Int64("offset", message.Offset).
+			Time("time", message.Time).
+			Int("size", len(message.Value))
+	}
 }
 
 func parseKafkaBrokers(source *url.URL) ([]string, error) {
@@ -166,5 +179,5 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 
 // nolint:gochecknoinits
 func init() {
-	RegisterSourceFactory("kafka", newKafkaSource)
+	source.RegisterFactory("kafka", newKafkaSource)
 }

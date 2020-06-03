@@ -1,11 +1,12 @@
 package server
 
 import (
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/spf13/cobra"
 )
 
 func StartCommand() {
-	l := NewLogger()
+	l := log.NewLogger()
 	cfg := &Configuration{}
 
 	rootCmd := &cobra.Command{
@@ -14,7 +15,7 @@ func StartCommand() {
 		Long: `Service that exposes a graphQL endpoint allowing client to subscribe to different kind of stream sources.
 Sources currently supported are:
  - Kafka: The distributed streaming platform.
-		
+
  See https://github.com/ccamel/go-graphql-subscription-example`,
 		Run: func(cmd *cobra.Command, args []string) {
 			server := NewServer(cfg)

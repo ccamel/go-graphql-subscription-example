@@ -1,10 +1,11 @@
-package server
+package consumer
 
 import (
 	"context"
 	"net/url"
 	"time"
 
+	"github.com/ccamel/go-graphql-subscription-example/server/source"
 	"github.com/reactivex/rxgo/v2"
 	"github.com/robinjoseph08/redisqueue/v2"
 	"github.com/rs/zerolog"
@@ -21,7 +22,7 @@ func (s redisSource) URI() *url.URL {
 	return s.uri
 }
 
-func newRedisSource(uri *url.URL) (Source, error) {
+func newRedisSource(uri *url.URL) (source.Source, error) {
 	opt, err := makeRedisOptions(uri)
 
 	if err != nil {
@@ -124,5 +125,5 @@ func unmarshalRedisMessage(m *redisqueue.Message) (map[string]interface{}, bool)
 
 // nolint:gochecknoinits
 func init() {
-	RegisterSourceFactory("redis", newRedisSource)
+	source.RegisterFactory("redis", newRedisSource)
 }

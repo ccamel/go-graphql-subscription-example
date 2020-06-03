@@ -11,7 +11,7 @@
 [![fossa-status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
 
 > Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume pre-configured topics from different kinds of 
-> stream sources like [Apache Kafka](https://kafka.apache.org/) or [redis](https://redis.io/)...
+> stream sources like [Apache Kafka](https://kafka.apache.org/), [redis](https://redis.io/), [NSQ](https://nsq.io)...
 
 ## Purpose
 
@@ -32,6 +32,8 @@ This particular example demonstrates how to perform basic operations such as:
         high-throughput, low-latency platform for handling real-time data feeds.
     -   [Redis Streams](https://redis.io/) -
         an open source, in-memory data structure store, message broker with [streaming](https://redis.io/topics/streams-intro) capabilities.
+    -   [NSQ](https://nsq.io) -
+        a realtime distributed messaging platform designed to operate at scale.
         
 -   process messages using [reactive streams](http://reactivex.io/)
 -   filter messages using an expression evaluator
@@ -173,7 +175,7 @@ The message should be displayed on the browser.
 
 At first, a redis server (at least v5.0) must be started. See [official documentation](https://redis.io/download) for more.
 
-### 3. Start the GraphQL server
+### 2. Start the GraphQL server
 
 Run the application which exposes the 2 previously created topics to subscribers: 
 
@@ -187,7 +189,7 @@ Alternately, if the docker image has been previously built, the container can be
 > docker run -ti --rm -p 8000:8000 ccamel/go-graphql-subscription-example --source redis://6379?name=foo --topics topic-a,topic-b
 ```
 
-### 4. Subscribe
+### 3. Subscribe
 
 The application exposes a graphql endpoint through which clients can receive messages coming from a redis stream.
 
@@ -211,13 +213,75 @@ subscription {
 }
 ```
 
-### 5. Push messages
+### 4. Push messages
 
 Start the `redis-cli` and then use the `XADD` command to send the messages to the Redis stream.
 
 ```sh
 > redis-cli
 127.0.0.1:6379> XADD topic-a * message "hello world !" "value" "14" 
+```
+
+The message should be displayed on the browser.
+
+## How to play with it using NSQ?
+
+⚠️ NSQ implementation does not support offsets (i.e. the capability to resume at some point in time).
+
+### 1. Start NSQ
+
+At first, NSQ must be started. See [official documentation](https://nsq.io/overview/quick_start.html) for more.
+
+```sh
+> nsqlookupd
+> nsqd --lookupd-tcp-address=127.0.0.1:4160
+> nsqadmin --lookupd-http-address=127.0.0.1:4161
+```
+
+### 2. Start the GraphQL server
+
+Run the application which exposes the 2 previously created topics to subscribers: 
+
+```sh
+> ./go-graphql-subscription-example --source nsq: --topics topic-a,topic-b 
+```
+
+Alternately, if the docker image has been previously built, the container can be started this way:
+
+```sh
+> docker run -ti --rm -p 8000:8000 ccamel/go-graphql-subscription-example --source nsq: --topics topic-a,topic-b
+```
+
+### 3. Subscribe
+
+The application exposes a graphql endpoint through which clients can receive messages coming from a redis stream.
+
+Navigate to `http://localhost:8000/graphiql` URL and submit the subscription to the topic `topic-a`.
+
+```graphql
+subscription {
+  event(on: "topic-a")
+}
+```
+
+Additionally, a filter expression can be specified. The events consumed are then only ones matching the given predicate.
+You can refer to [antonmedv/expr] for an overview of the syntax to use to write predicates.
+
+```graphql
+subscription {
+  event(
+    on: "topic-a",
+    matching: "message contains \"hello\""
+  )
+}
+```
+
+### 4. Push messages
+
+Publish a message to the topic `topic-a` by using the command line below:
+
+```sh
+> curl -d '{ "message": "hello world !", "value": 14 }' 'http://127.0.0.1:4151/pub?topic=topic-a'
 ```
 
 The message should be displayed on the browser.
@@ -243,6 +307,10 @@ This application mainly uses:
 -   **Redis**
 
     ↳ [robinjoseph08/redisqueue](https://github.com/robinjoseph08/redisqueue)
+
+-   **NSQ**
+
+    ↳ [nsqio/go-nsq](https://github.com/nsqio/go-nsq)
 
 -   **Expression language**
 
