@@ -30,13 +30,13 @@ dockerize:
 	docker build -t ccamel/go-graphql-subscription-example .
 
 $(GOPATH)/bin/gothanks:
-	@echo "installing $(notdir $@)"
+	@echo "📦 installing $(notdir $@)"
 	go get -u github.com/psampaz/gothanks
 
 $(GOPATH)/bin/esc:
-	@echo "installing $(notdir $@)"
+	@echo "📦 installing $(notdir $@)"
 	go get -u github.com/mjibson/esc
 
 ./bin/golangci-lint:
-	@echo "installing $(notdir $@)"
+	@echo "📦 installing $(notdir $@)"
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
