@@ -27,8 +27,12 @@ This particular example demonstrates how to perform basic operations such as:
 -   implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.16 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.16/PROTOCOL.md))
 -   implement custom [graphQL] _scalars_
 -   consumer following kind of stream sources:
-    -   [Apache Kafka](https://kafka.apache.org/) messages
-    -   [Redis Streams](https://redis.io/topics/streams-intro)
+    -   [Apache Kafka](https://kafka.apache.org/) -
+        an open-source stream-processing software which aims to provide a unified,
+        high-throughput, low-latency platform for handling real-time data feeds.
+    -   [Redis Streams](https://redis.io/) -
+        an open source, in-memory data structure store, message broker with [streaming](https://redis.io/topics/streams-intro) capabilities.
+        
 -   process messages using [reactive streams](http://reactivex.io/)
 -   filter messages using an expression evaluator
 -   ...
