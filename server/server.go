@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/ccamel/go-graphql-subscription-example/server/log"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rs/zerolog"
 
 	"github.com/ccamel/go-graphql-subscription-example/static"
@@ -40,6 +41,7 @@ func (s *Server) Start() {
 	router := http.NewServeMux()
 	router.Handle("/graphql", withMiddleware(s.log, s.graphqlApp()))
 	router.Handle("/graphiql", withMiddleware(s.log, s.graphiqlApp()))
+	router.Handle("/metrics", withMiddleware(s.log, promhttp.Handler()))
 
 	server := &http.Server{
 		Addr:         fmt.Sprintf(":%d", s.cfg.Port),
