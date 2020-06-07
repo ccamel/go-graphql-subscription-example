@@ -56,6 +56,7 @@ client --right-( ISubscription : subscribe \n
 
 rectangle "<$kafka>Kafka\n<$EIP_MessageChannel>" as Kafka <<hidden>>
 rectangle "<$redis>Redis\n<$EIP_MessageChannel>" as Redis <<hidden>>
+rectangle "NSQ\n<$EIP_MessageChannel>" as NSQ <<hidden>>
 
 Subscription --> Kafka
 Kafka ...> Subscription
@@ -63,4 +64,6 @@ Kafka ...> Subscription
 Subscription --> Redis
 Redis ...> Subscription
 
+Subscription --> NSQ
+NSQ ...> Subscription
 @enduml
