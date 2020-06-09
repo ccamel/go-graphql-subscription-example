@@ -8,6 +8,7 @@ require (
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190611222414-40c048432299
 	github.com/justinas/alice v1.2.0
 	github.com/nsqio/go-nsq v1.0.8
+	github.com/prometheus/client_golang v1.6.0
 	github.com/reactivex/rxgo/v2 v2.1.0
 	github.com/robinjoseph08/redisqueue/v2 v2.0.0
 	github.com/rs/zerolog v1.19.0

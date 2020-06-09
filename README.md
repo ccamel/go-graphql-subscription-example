@@ -24,6 +24,7 @@ This repository implements a simple service allowing clients to consume messages
 This particular example demonstrates how to perform basic operations such as:
 
 -   serve a [graphiQL](https://github.com/graphql/graphiql) page
+-   expose a [Prometheus](https://prometheus.io/) endpoint
 -   implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.16 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.16/PROTOCOL.md))
 -   implement custom [graphQL] _scalars_
 -   consumer following kind of stream sources:
@@ -41,7 +42,7 @@ This particular example demonstrates how to perform basic operations such as:
 
 ## Pre-requisites
 
- **Requires Go 1.11.x** or above, which support Go modules. Read more about them [here](https://github.com/golang/go/wiki/Modules).    
+ **Requires Go 1.14.x** or above, which support Go modules. Read more about them [here](https://github.com/golang/go/wiki/Modules).    
 
 ## Build
 
@@ -299,6 +300,10 @@ This application mainly uses:
     ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) 
 
     ↳ [graphql/graphiql](https://github.com/graphql/graphiql)       
+
+-   **Prometheus**
+
+    ↳ [prometheus/client_golang](https://github.com/prometheus/client_golang)
 
 -   **Kafka**
 

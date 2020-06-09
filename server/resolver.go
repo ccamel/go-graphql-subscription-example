@@ -9,6 +9,7 @@ import (
 	"github.com/antonmedv/expr"
 	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/ccamel/go-graphql-subscription-example/server/source"
+	"github.com/prometheus/client_golang/prometheus"
 	"github.com/rs/zerolog"
 
 	"github.com/ccamel/go-graphql-subscription-example/server/scalar"
@@ -64,12 +65,31 @@ func (r *Resolver) Event(
 
 	ctx = r.log.WithContext(ctx)
 
-	r.source.NewConsumer(ctx, args.On, args.At.Value().Int64()).
+	r.source.
+		NewConsumer(ctx, args.On, args.At.Value().Int64()).
+		Map(func(_ context.Context, i interface{}) (interface{}, error) {
+			messagesProcessed.
+				With(prometheus.Labels{"stage": "received"}).
+				Inc()
+			return i, nil
+		}).
 		Filter(func(i interface{}) bool {
 			return r.acceptMessage(i.(map[string]interface{}), args.Matching)
 		}).
 		Map(func(_ context.Context, i interface{}) (interface{}, error) {
+			messagesProcessed.
+				With(prometheus.Labels{"stage": "accepted"}).
+				Inc()
+			return i, nil
+		}).
+		Map(func(_ context.Context, i interface{}) (interface{}, error) {
 			return scalar.NewJSONObject(i.(map[string]interface{})), nil
+		}).
+		Map(func(_ context.Context, i interface{}) (interface{}, error) {
+			messagesProcessed.
+				With(prometheus.Labels{"stage": "processed"}).
+				Inc()
+			return i, nil
 		}).
 		DoOnNext(func(i interface{}) {
 			c <- i.(*scalar.JSONObject)
