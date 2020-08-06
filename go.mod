@@ -5,7 +5,7 @@ go 1.14
 require (
 	github.com/antonmedv/expr v1.8.8
 	github.com/graph-gophers/graphql-go v0.0.0-20200622220639-c1d9693c95a6
-	github.com/graph-gophers/graphql-transport-ws v0.0.0-20190611222414-40c048432299
+	github.com/graph-gophers/graphql-transport-ws v0.0.0-20200806130622-dcc0e8d53556
 	github.com/justinas/alice v1.2.0
 	github.com/nsqio/go-nsq v1.0.8
 	github.com/prometheus/client_golang v1.7.1
