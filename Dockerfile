@@ -1,5 +1,5 @@
 # Stage build
-FROM golang:1.14.7 as builder
+FROM golang:1.15.0 as builder
 
 WORKDIR /go/src/github.com/ccamel
 
