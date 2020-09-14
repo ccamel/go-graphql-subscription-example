@@ -11,7 +11,7 @@ require (
 	github.com/prometheus/client_golang v1.7.1
 	github.com/reactivex/rxgo/v2 v2.1.0
 	github.com/robinjoseph08/redisqueue/v2 v2.0.0
-	github.com/rs/zerolog v1.19.0
+	github.com/rs/zerolog v1.20.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.2
 	github.com/spf13/cobra v1.0.0
