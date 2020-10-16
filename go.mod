@@ -14,7 +14,7 @@ require (
 	github.com/rs/zerolog v1.20.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.4
-	github.com/spf13/cobra v1.0.0
+	github.com/spf13/cobra v1.1.0
 	github.com/stretchr/objx v0.2.0 // indirect
 	golang.org/x/tools v0.0.0-20200526224456-8b020aee10d2 // indirect
 )
