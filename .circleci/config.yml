@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.15.4
+      - image: circleci/golang:1.15.6
 
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
 
@@ -27,7 +27,7 @@ jobs:
             - "/go/pkg"
   thanks:
     docker:
-      - image: circleci/golang:1.15.4
+      - image: circleci/golang:1.15.6
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
