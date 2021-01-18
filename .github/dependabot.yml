@@ -9,3 +9,5 @@ updates:
       - ccamel
     reviewers:
       - ccamel
+    commit-message:
+      prefix: ":arrow_up:"
