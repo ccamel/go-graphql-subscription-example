@@ -18,9 +18,7 @@ import (
 	"github.com/segmentio/kafka-go"
 )
 
-var (
-	ErrNoBrokerSpecified = errors.New("no broker specified")
-)
+var ErrNoBrokerSpecified = errors.New("no broker specified")
 
 type kafkaSource struct {
 	uri     *url.URL
@@ -151,14 +149,13 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 		for {
 			m, err := r.ReadMessage(c.ctx)
 			if err != nil {
-				switch err {
-				case io.EOF:
-				default:
+				if !errors.Is(err, io.EOF) {
 					c.log.
 						Warn().
 						Err(err).
 						Msg("❌ Error when reading message")
 				}
+
 				break
 			}
 

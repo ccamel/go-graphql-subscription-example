@@ -18,5 +18,8 @@ linters:
   disable:
     - lll
     - gomnd
+    - gci
+    - exhaustive
+    - exhaustivestruct
   fast: false
 
