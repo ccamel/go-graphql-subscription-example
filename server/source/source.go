@@ -37,19 +37,14 @@ func RegisterFactory(scheme string, factory Factory) {
 // New returns a new instance of source given the uri.
 // The uri contains all the required information to perform a connection to the source endpoint.
 func New(uri *url.URL) (Source, error) {
-	for scheme, factory := range sourceFactories {
-		if uri.Scheme == scheme {
-			return factory(uri)
-		}
+	factory, ok := sourceFactories[uri.Scheme]
+	if ok {
+		return factory(uri)
 	}
 
-	keys := make([]string, len(sourceFactories))
-
-	i := 0
-
+	keys := make([]string, 0, len(sourceFactories))
 	for k := range sourceFactories {
-		keys[i] = k
-		i++
+		keys = append(keys, k)
 	}
 
 	return nil, fmt.Errorf("scheme %s is not supported (available are: %s): %w",
