@@ -55,7 +55,7 @@ func TestNew(t *testing.T) {
 				So(err, ShouldNotBeNil)
 				So(source, ShouldBeNil)
 
-				So(err, ShouldBeError, "scheme barbar is not supported (available are: foo,bar): incorrect scheme")
+				So(err, ShouldBeError, "scheme 'barbar' for url 'barbar://xyz?t=0' is not supported (available are: foo, bar): incorrect scheme")
 			})
 		})
 	})

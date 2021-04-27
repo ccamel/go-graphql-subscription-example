@@ -47,6 +47,6 @@ func New(uri *url.URL) (Source, error) {
 		keys = append(keys, k)
 	}
 
-	return nil, fmt.Errorf("scheme %s is not supported (available are: %s): %w",
-		uri.Scheme, strings.Join(keys, ","), ErrIncorrectScheme)
+	return nil, fmt.Errorf("scheme '%s' for url '%s' is not supported (available are: %s): %w",
+		uri.Scheme, uri, strings.Join(keys, ", "), ErrIncorrectScheme)
 }
