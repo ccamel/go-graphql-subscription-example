@@ -42,7 +42,7 @@ $(GOPATH)/bin/esc:
 
 ./bin/golangci-lint:
 	@echo "📦 installing $(notdir $@)"
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.39.0
 
 $(GOPATH)/bin/goconvey:
 	@echo "📦 installing $(notdir $@)"
