@@ -19,7 +19,7 @@ import (
 	"github.com/justinas/alice"
 	"github.com/rs/zerolog/hlog"
 
-	// Register available consumers
+	// Register available consumers.
 	_ "github.com/ccamel/go-graphql-subscription-example/server/consumer"
 )
 

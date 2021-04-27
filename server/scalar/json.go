@@ -28,6 +28,7 @@ func (t *JSONObject) UnmarshalGraphQL(input interface{}) error {
 	switch input := input.(type) {
 	case map[string]interface{}:
 		t.v = input
+
 		return nil
 	default:
 		return fmt.Errorf("type %T: %w", input, ErrUnmarshall)
@@ -39,5 +40,10 @@ func (t *JSONObject) UnmarshalGraphQL(input interface{}) error {
 // This function will be called whenever you
 // query for fields that use the JSONObject type.
 func (t JSONObject) MarshalJSON() ([]byte, error) {
-	return json.Marshal(t.v)
+	bytes, err := json.Marshal(t.v)
+	if err != nil {
+		return nil, fmt.Errorf("marshalling failed: %w", err)
+	}
+
+	return bytes, nil
 }

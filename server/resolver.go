@@ -30,12 +30,12 @@ type Resolver struct {
 func NewResolver(cfg *Configuration, log zerolog.Logger) (*Resolver, error) {
 	sourceURI, err := url.Parse(cfg.Source)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("url %s failed to be parsed: %w", cfg.Source, err)
 	}
 
 	src, err := source.New(sourceURI)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("source %s failed to be created: %w", cfg.Source, err)
 	}
 
 	log.
@@ -71,6 +71,7 @@ func (r *Resolver) Event(
 			messagesProcessed.
 				With(prometheus.Labels{"stage": "received"}).
 				Inc()
+
 			return i, nil
 		}).
 		Filter(func(i interface{}) bool {
@@ -80,6 +81,7 @@ func (r *Resolver) Event(
 			messagesProcessed.
 				With(prometheus.Labels{"stage": "accepted"}).
 				Inc()
+
 			return i, nil
 		}).
 		Map(func(_ context.Context, i interface{}) (interface{}, error) {
@@ -89,6 +91,7 @@ func (r *Resolver) Event(
 			messagesProcessed.
 				With(prometheus.Labels{"stage": "processed"}).
 				Inc()
+
 			return i, nil
 		}).
 		DoOnNext(func(i interface{}) {
@@ -118,7 +121,6 @@ func (r *Resolver) acceptMessage(m map[string]interface{}, predicate *string) bo
 	}
 
 	out, err := expr.Eval(*predicate, m)
-
 	if err != nil {
 		r.log.
 			Warn().

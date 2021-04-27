@@ -42,9 +42,11 @@ func (t *Offset) UnmarshalGraphQL(input interface{}) error {
 		return nil
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		t.v = new(big.Int).SetInt64(v.Int())
+
 		return nil
 	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
 		t.v = new(big.Int).SetUint64(v.Uint())
+
 		return nil
 	default:
 		return fmt.Errorf("type %T: %w", input, ErrUnmarshall)
@@ -56,7 +58,12 @@ func (t *Offset) UnmarshalGraphQL(input interface{}) error {
 // This function will be called whenever you
 // query for fields that use the Offset type.
 func (t Offset) MarshalJSON() ([]byte, error) {
-	return json.Marshal(t.v)
+	bytes, err := json.Marshal(t.v)
+	if err != nil {
+		return nil, fmt.Errorf("marshalling failed: %w", err)
+	}
+
+	return bytes, nil
 }
 
 // Value returns the value for this scalar.

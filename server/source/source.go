@@ -10,9 +10,7 @@ import (
 	"github.com/reactivex/rxgo/v2"
 )
 
-var (
-	ErrIncorrectScheme = errors.New("incorrect scheme")
-)
+var ErrIncorrectScheme = errors.New("incorrect scheme")
 
 // Source specifies types which are able to provide a source of events through an Observable.
 type Source interface {

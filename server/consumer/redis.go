@@ -24,7 +24,6 @@ func (s redisSource) URI() *url.URL {
 
 func newRedisSource(uri *url.URL) (source.Source, error) {
 	opt, err := makeRedisOptions(uri)
-
 	if err != nil {
 		return nil, err
 	}
