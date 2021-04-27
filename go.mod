@@ -17,4 +17,5 @@ require (
 	github.com/smartystreets/goconvey v1.6.4 // indirect
 	github.com/spf13/cobra v1.1.3
 	github.com/stretchr/objx v0.2.0 // indirect
+	mvdan.cc/gofumpt v0.1.1 // indirect
 )

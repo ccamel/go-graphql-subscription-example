@@ -6,7 +6,7 @@ GO111MODULE=on
 
 default: build
 
-tools: ./bin/golangci-lint $(GOPATH)/bin/esc $(GOPATH)/bin/goconvey $(GOPATH)/bin/gothanks
+tools: ./bin/golangci-lint $(GOPATH)/bin/esc $(GOPATH)/bin/goconvey $(GOPATH)/bin/gofumpt $(GOPATH)/bin/gothanks
 
 deps:
 	go get .
@@ -31,6 +31,10 @@ build-linux-amd64:
 
 dockerize:
 	docker build -t ccamel/go-graphql-subscription-example .
+
+$(GOPATH)/bin/gofumpt:
+	@echo "📦 installing $(notdir $@)"
+	go get -u mvdan.cc/gofumpt
 
 $(GOPATH)/bin/gothanks:
 	@echo "📦 installing $(notdir $@)"
