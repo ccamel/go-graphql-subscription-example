@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"github.com/ccamel/go-graphql-subscription-example/server/log"
+	"github.com/ccamel/go-graphql-subscription-example/static"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rs/zerolog"
 
-	"github.com/ccamel/go-graphql-subscription-example/static"
 	"github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
 	"github.com/graph-gophers/graphql-transport-ws/graphqlws"
@@ -66,7 +66,7 @@ func (s *Server) Start() {
 }
 
 func (s *Server) graphiqlApp() http.Handler {
-	t := template.Must(template.New("graphiql").Parse(static.FSMustString(false, "/static/graphiql/graphiql.html")))
+	t := template.Must(template.New("graphiql").Parse(static.ReadFileStringMust("graphiql/graphiql.html")))
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if err := t.Execute(w, s.cfg.Port); err != nil {
@@ -88,7 +88,7 @@ func (s *Server) graphqlApp() http.Handler {
 			Msg("Failed to create resolver")
 	}
 
-	schema := graphql.MustParseSchema(static.FSMustString(false, "/static/graphql/schema/subscription-api.graphql"), resolver)
+	schema := graphql.MustParseSchema(static.ReadFileStringMust("graphql/schema/subscription-api.graphql"), resolver)
 
 	graphQLHandler := graphqlws.NewHandlerFunc(schema, &relay.Handler{Schema: schema})
 
