@@ -34,11 +34,11 @@ dockerize:
 
 $(GOPATH)/bin/gofumpt:
 	@echo "📦 installing $(notdir $@)"
-	go get -u mvdan.cc/gofumpt
+	go install mvdan.cc/gofumpt@latest
 
 $(GOPATH)/bin/gothanks:
 	@echo "📦 installing $(notdir $@)"
-	go get -u github.com/psampaz/gothanks
+	go install github.com/psampaz/gothanks@latest
 
 ./bin/golangci-lint:
 	@echo "📦 installing $(notdir $@)"
@@ -46,4 +46,4 @@ $(GOPATH)/bin/gothanks:
 
 $(GOPATH)/bin/goconvey:
 	@echo "📦 installing $(notdir $@)"
-	go get github.com/smartystreets/goconvey
+	go install github.com/smartystreets/goconvey@latest
