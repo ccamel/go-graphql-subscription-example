@@ -21,5 +21,8 @@ linters:
     - gci
     - exhaustive
     - exhaustivestruct
+    - interfacer
+    - scopelint
+    - maligned
   fast: false
 

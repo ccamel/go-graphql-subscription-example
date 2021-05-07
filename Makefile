@@ -6,7 +6,7 @@ GO111MODULE=on
 
 default: build
 
-tools: ./bin/golangci-lint $(GOPATH)/bin/esc $(GOPATH)/bin/goconvey $(GOPATH)/bin/gofumpt $(GOPATH)/bin/gothanks
+tools: ./bin/golangci-lint $(GOPATH)/bin/goconvey $(GOPATH)/bin/gofumpt $(GOPATH)/bin/gothanks
 
 deps:
 	go get .
@@ -34,15 +34,11 @@ dockerize:
 
 $(GOPATH)/bin/gofumpt:
 	@echo "📦 installing $(notdir $@)"
-	go get -u mvdan.cc/gofumpt
+	go install mvdan.cc/gofumpt@latest
 
 $(GOPATH)/bin/gothanks:
 	@echo "📦 installing $(notdir $@)"
-	go get -u github.com/psampaz/gothanks
-
-$(GOPATH)/bin/esc:
-	@echo "📦 installing $(notdir $@)"
-	go get -u github.com/mjibson/esc
+	go install github.com/psampaz/gothanks@latest
 
 ./bin/golangci-lint:
 	@echo "📦 installing $(notdir $@)"
@@ -50,4 +46,4 @@ $(GOPATH)/bin/esc:
 
 $(GOPATH)/bin/goconvey:
 	@echo "📦 installing $(notdir $@)"
-	go get github.com/smartystreets/goconvey
+	go install github.com/smartystreets/goconvey@latest

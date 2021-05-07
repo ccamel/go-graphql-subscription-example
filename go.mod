@@ -1,6 +1,6 @@
 module github.com/ccamel/go-graphql-subscription-example
 
-go 1.14
+go 1.16
 
 require (
 	github.com/antonmedv/expr v1.8.9
