@@ -19,7 +19,7 @@ jobs:
             - /go/pkg/mod
   thanks:
     docker:
-      - image: 'circleci/golang:1.15.6'
+      - image: 'circleci/golang:1.16.3'
     steps:
       - checkout
       - run: make thanks
