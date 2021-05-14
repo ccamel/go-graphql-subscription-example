@@ -11,11 +11,10 @@ require (
 	github.com/prometheus/client_golang v1.10.0
 	github.com/reactivex/rxgo/v2 v2.5.0
 	github.com/robinjoseph08/redisqueue/v2 v2.1.0
-	github.com/rs/zerolog v1.21.0
+	github.com/rs/zerolog v1.22.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.15
 	github.com/smartystreets/goconvey v1.6.4
 	github.com/spf13/cobra v1.1.3
 	github.com/stretchr/objx v0.2.0 // indirect
-	golang.org/x/mod v0.4.0 // indirect
 )
