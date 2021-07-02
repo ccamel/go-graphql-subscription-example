@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	github.com/antonmedv/expr v1.8.9
+	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20201113091052-beb923fada29
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20200904065757-c681d7e1b135
 	github.com/justinas/alice v1.2.0
@@ -15,7 +16,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.16
 	github.com/smartystreets/goconvey v1.6.4
-	github.com/spf13/cobra v1.1.3
+	github.com/spf13/cobra v1.2.0
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/urfave/cli v1.22.1 // indirect
 )
