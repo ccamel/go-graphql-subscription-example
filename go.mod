@@ -13,11 +13,13 @@ require (
 	github.com/prometheus/client_golang v1.12.1
 	github.com/reactivex/rxgo/v2 v2.5.0
 	github.com/robinjoseph08/redisqueue/v2 v2.1.0
-	github.com/rs/zerolog v1.26.1
+	github.com/rs/zerolog v1.28.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.30
 	github.com/smartystreets/goconvey v1.7.2
 	github.com/spf13/cobra v1.3.0
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/urfave/cli v1.22.1 // indirect
+	golang.org/x/crypto v0.0.0-20211215165025-cf75a172585e // indirect
+	golang.org/x/tools v0.1.7 // indirect
 )
