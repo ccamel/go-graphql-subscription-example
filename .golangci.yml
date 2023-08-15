@@ -9,53 +9,68 @@ output:
   print-issued-lines: true
   print-linter-name: true
 
-linters-settings:
-  funlen:
-    lines: 76
-
 linters:
   disable-all: true
   enable:
-    - deadcode
     - errcheck
     - gosimple
     - govet
     - ineffassign
     - staticcheck
-    - structcheck
     - typecheck
     - unused
-    - varcheck
+    - asciicheck
+    - bidichk
     - bodyclose
-    - depguard
+    - contextcheck
+    - cyclop
     - dupl
+    - durationcheck
+    - errname
     - errorlint
+    - exhaustive
     - exportloopref
-    - forcetypeassert
     - funlen
-    #    - gci
+    - forbidigo
+    - gci
     - gocognit
     - goconst
     - gocritic
     - gocyclo
     - godot
-    - goerr113
-    - gofumpt
-    - golint
-    #   - gomnd
+    - goimports
+    - gomodguard
     - goprintffuncname
     - gosec
-    - ifshort
-    - misspell
+    - lll
+    - makezero
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
     - noctx
     - nolintlint
-    - rowserrcheck
-    - sqlclosecheck
+    - prealloc
+    - predeclared
+    - promlinter
+    - revive
     - stylecheck
-    - thelper
+    - tenv
     - tparallel
     - unconvert
     - unparam
     - whitespace
-    - wrapcheck
-  fast: false
+
+fast: true
+
+linters-settings:
+  funlen:
+    lines: 76
+  gci:
+    sections:
+      - standard
+      - default
+      - blank
+      - dot
+      - prefix(github.com/ccamel/go-graphql-subscription-example)
+    custom-order: true
