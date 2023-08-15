@@ -3,7 +3,7 @@ package static
 import "embed"
 
 //go:embed graphiql/* graphql/*
-var fs embed.FS // nolint:gochecknoglobals
+var fs embed.FS //nolint:gochecknoglobals
 
 func ReadFileStringMust(filename string) string {
 	data, err := fs.ReadFile(filename)

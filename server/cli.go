@@ -1,8 +1,9 @@
 package server
 
 import (
-	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/spf13/cobra"
+
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
 )
 
 func StartCommand() {
@@ -26,7 +27,8 @@ Sources currently supported are:
 
 	f := rootCmd.Flags()
 	f.Uint16Var(&cfg.Port, "port", 8000, "The listening port")
-	f.StringSliceVar(&cfg.Topics, "topics", []string{"foo"}, "The list of topics/stream names that subscribers can consume")
+	f.StringSliceVar(&cfg.Topics, "topics", []string{"foo"},
+		`The list of topics/stream names that subscribers can consume`)
 	f.StringVar(&cfg.Source, "source", "kafka:?brokers=localhost:9092", "The URI of the source to connect to")
 
 	if err := rootCmd.Execute(); err != nil {

@@ -5,12 +5,12 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/ccamel/go-graphql-subscription-example/server/source"
-	"github.com/reactivex/rxgo/v2"
-	"github.com/robinjoseph08/redisqueue/v2"
+	rxgo "github.com/reactivex/rxgo/v2"
+	redisqueue "github.com/robinjoseph08/redisqueue/v2"
 	"github.com/rs/zerolog"
-
 	uuid "github.com/satori/go.uuid"
+
+	"github.com/ccamel/go-graphql-subscription-example/server/source"
 )
 
 type redisSource struct {
@@ -92,7 +92,7 @@ func (s redisSource) NewConsumer(ctx context.Context, topic string, offset int64
 	}}, rxgo.WithContext(ctx))
 }
 
-// nolint:unparam
+//nolint:unparam
 func makeRedisOptions(source *url.URL) (*redisqueue.ConsumerOptions, error) {
 	options := &redisqueue.ConsumerOptions{
 		VisibilityTimeout: 60 * time.Second,
@@ -122,7 +122,7 @@ func unmarshalRedisMessage(m *redisqueue.Message) (map[string]interface{}, bool)
 	return m.Values, true
 }
 
-// nolint:gochecknoinits
+//nolint:gochecknoinits
 func init() {
 	source.RegisterFactory("redis", newRedisSource)
 }

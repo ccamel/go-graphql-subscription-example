@@ -8,19 +8,19 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/ccamel/go-graphql-subscription-example/server/log"
-	"github.com/ccamel/go-graphql-subscription-example/static"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/rs/zerolog"
-
-	"github.com/graph-gophers/graphql-go"
+	graphql "github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
 	"github.com/graph-gophers/graphql-transport-ws/graphqlws"
 	"github.com/justinas/alice"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/hlog"
 
 	// Register available consumers.
 	_ "github.com/ccamel/go-graphql-subscription-example/server/consumer"
+
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
+	"github.com/ccamel/go-graphql-subscription-example/static"
 )
 
 type Server struct {

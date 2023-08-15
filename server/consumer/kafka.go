@@ -9,13 +9,13 @@ import (
 	"net/url"
 	"strings"
 
+	rxgo "github.com/reactivex/rxgo/v2"
+	"github.com/rs/zerolog"
+	uuid "github.com/satori/go.uuid"
+	kafka "github.com/segmentio/kafka-go"
+
 	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/ccamel/go-graphql-subscription-example/server/source"
-	"github.com/reactivex/rxgo/v2"
-	"github.com/rs/zerolog"
-
-	uuid "github.com/satori/go.uuid"
-	"github.com/segmentio/kafka-go"
 )
 
 var ErrNoBrokerSpecified = errors.New("no broker specified")
@@ -108,7 +108,7 @@ func unmarshalKafkaMessage(c kafkaConsumer, m kafka.Message) (map[string]interfa
 }
 
 func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
-	return rxgo.Create([]rxgo.Producer{func(ctx context.Context, next chan<- rxgo.Item) {
+	return rxgo.Create([]rxgo.Producer{func(_ context.Context, next chan<- rxgo.Item) {
 		defer func() {
 			c.log.
 				Info().
@@ -147,7 +147,7 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 		}()
 
 		for {
-			m, err := r.ReadMessage(c.ctx)
+			m, err := r.ReadMessage(c.ctx) //nolint:contextcheck
 			if err != nil {
 				if !errors.Is(err, io.EOF) {
 					c.log.
@@ -174,7 +174,7 @@ func makeObservableFromKafkaConsumer(c kafkaConsumer) rxgo.Observable {
 	}}, rxgo.WithContext(c.ctx))
 }
 
-// nolint:gochecknoinits
+//nolint:gochecknoinits
 func init() {
 	source.RegisterFactory("kafka", newKafkaSource)
 }

@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/reactivex/rxgo/v2"
+
 	. "github.com/smartystreets/goconvey/convey"
 )
 

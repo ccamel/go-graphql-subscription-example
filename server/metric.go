@@ -2,7 +2,7 @@ package server
 
 import "github.com/prometheus/client_golang/prometheus"
 
-// nolint:gochecknoglobals
+//nolint:gochecknoglobals
 var messagesProcessed = prometheus.NewCounterVec(
 	prometheus.CounterOpts{
 		Name: "api_messages_processed_total",
@@ -11,7 +11,7 @@ var messagesProcessed = prometheus.NewCounterVec(
 	[]string{"stage"},
 )
 
-// nolint:gochecknoinits
+//nolint:gochecknoinits
 func init() {
 	prometheus.MustRegister(messagesProcessed)
 }

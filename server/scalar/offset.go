@@ -29,6 +29,7 @@ func (Offset) ImplementsGraphQLType(name string) bool {
 func (t *Offset) UnmarshalGraphQL(input interface{}) error {
 	v := reflect.ValueOf(input)
 
+	//nolint:exhaustive
 	switch v.Kind() {
 	case reflect.String:
 		v, success := new(big.Int).SetString(v.String(), 10)

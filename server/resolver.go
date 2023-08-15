@@ -7,12 +7,12 @@ import (
 	"net/url"
 
 	"github.com/antonmedv/expr"
-	"github.com/ccamel/go-graphql-subscription-example/server/log"
-	"github.com/ccamel/go-graphql-subscription-example/server/source"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/rs/zerolog"
 
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
 	"github.com/ccamel/go-graphql-subscription-example/server/scalar"
+	"github.com/ccamel/go-graphql-subscription-example/server/source"
 )
 
 var (
@@ -56,7 +56,8 @@ func (r *Resolver) Event(
 		On       string
 		At       scalar.Offset
 		Matching *string
-	}) (<-chan *scalar.JSONObject, error) {
+	},
+) (<-chan *scalar.JSONObject, error) {
 	if !acceptTopic(args.On, r.cfg.Topics) {
 		return nil, fmt.Errorf("incorrect topic '%s' (valid topics are: %v): %w", args.On, r.cfg.Topics, ErrUnknownTopic)
 	}

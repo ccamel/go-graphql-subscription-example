@@ -6,12 +6,13 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/ccamel/go-graphql-subscription-example/server/log"
-	"github.com/ccamel/go-graphql-subscription-example/server/source"
-	"github.com/nsqio/go-nsq"
-	"github.com/reactivex/rxgo/v2"
+	nsq "github.com/nsqio/go-nsq"
+	rxgo "github.com/reactivex/rxgo/v2"
 	"github.com/rs/zerolog"
 	uuid "github.com/satori/go.uuid"
+
+	"github.com/ccamel/go-graphql-subscription-example/server/log"
+	"github.com/ccamel/go-graphql-subscription-example/server/source"
 )
 
 type nsqSource struct {
@@ -85,7 +86,7 @@ func (s nsqSource) NewConsumer(ctx context.Context, topic string, offset int64) 
 		}()
 
 		<-q.StopChan
-	}}, rxgo.WithContext(c.ctx))
+	}}, rxgo.WithContext(c.ctx)) //nolint:contextcheck
 }
 
 // NsqMessageAsZerologObject converts a NSQ message into a LogObjectMarshaler.
@@ -124,7 +125,7 @@ func newNsqSource(uri *url.URL) (source.Source, error) {
 	}, nil
 }
 
-// nolint:unparam
+//nolint:unparam
 func makeNsqOptions(source *url.URL) (*nsq.Config, error) {
 	config := nsq.NewConfig()
 
@@ -153,7 +154,7 @@ func unmarshalNsqMessage(c nsqConsumer, m *nsq.Message) (map[string]interface{},
 	return v, true
 }
 
-// nolint:gochecknoinits
+//nolint:gochecknoinits
 func init() {
 	source.RegisterFactory("nsq", newNsqSource)
 }

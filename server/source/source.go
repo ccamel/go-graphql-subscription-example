@@ -7,7 +7,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/reactivex/rxgo/v2"
+	rxgo "github.com/reactivex/rxgo/v2"
 )
 
 var ErrIncorrectScheme = errors.New("incorrect scheme")
@@ -24,7 +24,8 @@ type Source interface {
 type Factory func(uri *url.URL) (Source, error)
 
 // sourceFactories constains all the registered source factories.
-// nolint:gochecknoglobals
+//
+//nolint:gochecknoglobals
 var sourceFactories = make(map[string]Factory)
 
 // RegisterFactory registers a new source factory for the considered scheme.
