@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  workflow_call:
+
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Lint regular markdown files
+        uses: avto-dev/markdown-lint@v1.5.0
+        with:
+          args: '**/*.md'
+          ignore: 'CHANGELOG.md'
