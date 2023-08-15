@@ -51,7 +51,7 @@ $(GOPATH)/bin/gothanks:
 
 ./bin/golangci-lint:
 	@echo "📦 installing $(notdir $@)"
-	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.39.0
+	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.54.0
 
 $(GOPATH)/bin/goconvey:
 	@echo "📦 installing $(notdir $@)"
