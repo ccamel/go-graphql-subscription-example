@@ -66,3 +66,12 @@ jobs:
             exit 1
           fi
           echo "✅ Code is gofumpt!"
+
+  lint-yaml:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Lint yaml files
+        uses: ibiqlik/action-yamllint@v3.1.1
