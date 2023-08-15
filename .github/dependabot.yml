@@ -1,5 +1,17 @@
 version: 2
 updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    assignees:
+      - ccamel
+    reviewers:
+      - ccamel
+    commit-message:
+      prefix: ":arrow_up:"
+
   - package-ecosystem: gomod
     directory: "/"
     schedule:
