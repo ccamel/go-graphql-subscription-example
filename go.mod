@@ -11,12 +11,11 @@ require (
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20200904065757-c681d7e1b135
 	github.com/justinas/alice v1.2.0
 	github.com/kr/pretty v0.2.1 // indirect
-	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/nsqio/go-nsq v1.1.0
 	github.com/prometheus/client_golang v1.12.1
 	github.com/reactivex/rxgo/v2 v2.5.0
 	github.com/robinjoseph08/redisqueue/v2 v2.1.0
-	github.com/rs/zerolog v1.26.1
+	github.com/rs/zerolog v1.30.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.42
 	github.com/smartystreets/goconvey v1.8.1
