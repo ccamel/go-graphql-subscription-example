@@ -6,8 +6,6 @@ require (
 	github.com/antonmedv/expr v1.9.0
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
-	github.com/google/go-cmp v0.5.6 // indirect
-	github.com/google/uuid v1.1.2 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20201113091052-beb923fada29
 	github.com/graph-gophers/graphql-transport-ws v0.0.0-20200904065757-c681d7e1b135
@@ -21,9 +19,8 @@ require (
 	github.com/rs/zerolog v1.26.1
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.42
-	github.com/smartystreets/goconvey v1.7.2
+	github.com/smartystreets/goconvey v1.8.1
 	github.com/spf13/cobra v1.7.0
 	github.com/urfave/cli v1.22.1 // indirect
-	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 )
