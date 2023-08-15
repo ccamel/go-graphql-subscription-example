@@ -11,7 +11,7 @@
 [![license](https://img.shields.io/github/license/ccamel/go-graphql-subscription-example.svg?style=flat-square)](https://github.com/ccamel/go-graphql-subscription-example/blob/master/LICENSE)
 [![fossa-status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
 
-> Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume pre-configured topics from different kinds of 
+> Project that demonstrates [graphQL] [subscriptions (over Websocket)](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.4/PROTOCOL.md) to consume pre-configured topics from different kinds of
 > stream sources like [Apache Kafka](https://kafka.apache.org/), [redis](https://redis.io/), [NSQ](https://nsq.io)...
 
 ## Purpose
@@ -24,32 +24,32 @@ This repository implements a simple service allowing clients to consume messages
 
 This particular example demonstrates how to perform basic operations such as:
 
--   serve a [graphiQL](https://github.com/graphql/graphiql) page
--   expose a [Prometheus](https://prometheus.io/) endpoint
--   implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.16 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.16/PROTOCOL.md))
--   implement custom [graphQL] _scalars_
--   consumer following kind of stream sources:
-    -   [Apache Kafka](https://kafka.apache.org/) -
+- serve a [graphiQL](https://github.com/graphql/graphiql) page
+- expose a [Prometheus](https://prometheus.io/) endpoint
+- implement a subscription resolver using WebSocket transport (compliant with [Apollo v0.9.16 protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/v0.9.16/PROTOCOL.md))
+- implement custom [graphQL] _scalars_
+- consumer following kind of stream sources:
+  - [Apache Kafka](https://kafka.apache.org/) -
         an open-source stream-processing software which aims to provide a unified,
         high-throughput, low-latency platform for handling real-time data feeds.
-    -   [Redis Streams](https://redis.io/) -
+  - [Redis Streams](https://redis.io/) -
         an open source, in-memory data structure store, message broker with [streaming](https://redis.io/topics/streams-intro) capabilities.
-    -   [NSQ](https://nsq.io) -
+  - [NSQ](https://nsq.io) -
         a realtime distributed messaging platform designed to operate at scale.
-        
--   process messages using [reactive streams](http://reactivex.io/)
--   filter messages using an expression evaluator
--   ...
+
+- process messages using [reactive streams](http://reactivex.io/)
+- filter messages using an expression evaluator
+- ...
 
 ## Pre-requisites
 
- **Requires Go 1.14.x** or above, which support Go modules. Read more about them [here](https://github.com/golang/go/wiki/Modules).    
+ **Requires Go 1.14.x** or above, which support Go modules. Read more about them [here](https://github.com/golang/go/wiki/Modules).
 
 ## Build
 
 The project comes with a `Makefile`, so all the main activities can be performed by [make](https://www.gnu.org/software/make/).  
 
-:warning: The source code provided is incomplete - build needs a code generation phase, especially for the embedding of the static resources. 
+:warning: The source code provided is incomplete - build needs a code generation phase, especially for the embedding of the static resources.
 
 To build the project, simply invoke the `build` target:
 
@@ -109,7 +109,7 @@ Flags:
       --topics strings   The list of topics/stream names that subscribers can consume (default [foo])
 ```
 
-Run the application which exposes the 2 previously created topics to subscribers: 
+Run the application which exposes the 2 previously created topics to subscribers:
 
 ```sh
 > ./go-graphql-subscription-example --topics topic-a,topic-b 
@@ -135,8 +135,8 @@ subscription {
 
 The offset id to consume from can also be specified. Negative values have a special meaning:
 
--   `-1`: the most recent offset available for a partition (end)
--   `-2`: the least recent offset available for a partition (beginning)
+- `-1`: the most recent offset available for a partition (end)
+- `-2`: the least recent offset available for a partition (beginning)
 
 ```graphql
 subscription {
@@ -159,7 +159,7 @@ subscription {
 
 ### 5. Push messages
 
-Run the producer and then type a few messages into the console to send to Kafka. Note that messages shall be 
+Run the producer and then type a few messages into the console to send to Kafka. Note that messages shall be
 [JSON objects](https://www.json.org/).
 
 ```sh
@@ -179,7 +179,7 @@ At first, a redis server (at least v5.0) must be started. See [official document
 
 ### 2. Start the GraphQL server
 
-Run the application which exposes the 2 previously created topics to subscribers: 
+Run the application which exposes the 2 previously created topics to subscribers:
 
 ```sh
 > ./go-graphql-subscription-example --source redis://6379?name=foo --topics topic-a,topic-b 
@@ -242,7 +242,7 @@ At first, NSQ must be started. See [official documentation](https://nsq.io/overv
 
 ### 2. Start the GraphQL server
 
-Run the application which exposes the 2 previously created topics to subscribers: 
+Run the application which exposes the 2 previously created topics to subscribers:
 
 ```sh
 > ./go-graphql-subscription-example --source nsq: --topics topic-a,topic-b 
@@ -292,55 +292,55 @@ The message should be displayed on the browser.
 
 ### Technical
 
-This application mainly uses:    
+This application mainly uses:
 
--   **GraphQL**
+- **GraphQL**
 
     ↳ [graph-gophers/graphql-go](https://github.com/graph-gophers/graphql-go)
 
-    ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws) 
+    ↳ [graph-gophers/graphql-transport-ws](https://github.com/graph-gophers/graphql-transport-ws)
 
-    ↳ [graphql/graphiql](https://github.com/graphql/graphiql)       
+    ↳ [graphql/graphiql](https://github.com/graphql/graphiql)
 
--   **Prometheus**
+- **Prometheus**
 
     ↳ [prometheus/client_golang](https://github.com/prometheus/client_golang)
 
--   **Kafka**
+- **Kafka**
 
     ↳ [segment-integrations/connect-kafka](https://github.com/segment-integrations/connect-kafka)
 
--   **Redis**
+- **Redis**
 
     ↳ [robinjoseph08/redisqueue](https://github.com/robinjoseph08/redisqueue)
 
--   **NSQ**
+- **NSQ**
 
     ↳ [nsqio/go-nsq](https://github.com/nsqio/go-nsq)
 
--   **Expression language**
+- **Expression language**
 
     ↳ [antonmedv/expr]
 
--   **Design Patterns**
+- **Design Patterns**
 
     ↳ [ReactiveX/RxGo v2](https://github.com/ReactiveX/RxGo/tree/v2.0.0)
 
--   **CLI**
+- **CLI**
 
     ↳ [spf13/cobra](https://github.com/spf13/cobra)  
 
--   **Log** 
+- **Log**
 
     ↳ [rs/zerolog](https://github.com/rs/zerolog)  
 
 ### Project
 
--   **Build**
+- **Build**
 
     ↳ [make](https://www.gnu.org/software/make/)
 
--   **Linter**  
+- **Linter**  
 
     ↳ [golangci-lint](https://github.com/golangci/golangci-lint)
 
