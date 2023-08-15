@@ -33,7 +33,7 @@ linters:
     - exportloopref
     - forcetypeassert
     - funlen
-#    - gci
+    #    - gci
     - gocognit
     - goconst
     - gocritic
@@ -42,7 +42,7 @@ linters:
     - goerr113
     - gofumpt
     - golint
- #   - gomnd
+    #   - gomnd
     - goprintffuncname
     - gosec
     - ifshort
@@ -59,4 +59,3 @@ linters:
     - whitespace
     - wrapcheck
   fast: false
-

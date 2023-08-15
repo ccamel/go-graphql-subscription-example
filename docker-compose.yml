@@ -1,20 +1,20 @@
-version: '2'
+version: "2"
 
 services:
   zookeeper:
-    image: 'bitnami/zookeeper:3'
+    image: "bitnami/zookeeper:3"
     ports:
-      - '2181:2181'
+      - "2181:2181"
     volumes:
-      - 'zookeeper_data:/bitnami'
+      - "zookeeper_data:/bitnami"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
-    image: 'bitnami/kafka:2'
+    image: "bitnami/kafka:2"
     ports:
-      - '9092:9092'
+      - "9092:9092"
     volumes:
-      - 'kafka_data:/bitnami'
+      - "kafka_data:/bitnami"
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
@@ -22,11 +22,18 @@ services:
       - zookeeper
   go-graphql-subscription-example:
     build: .
-    image: 'ccamel/go-graphql-subscription-example'
+    image: "ccamel/go-graphql-subscription-example"
     working_dir: /root/
-    entrypoint: ['./go-graphql-subscription-example', '--brokers', 'kafka:9092', '--topics', '${TOPICS}']
+    entrypoint:
+      [
+        "./go-graphql-subscription-example",
+        "--brokers",
+        "kafka:9092",
+        "--topics",
+        "${TOPICS}",
+      ]
     ports:
-      - '${PORT}:8000'
+      - "${PORT}:8000"
     depends_on:
       - kafka
 
