@@ -10,15 +10,16 @@ tools: ./bin/golangci-lint $(GOPATH)/bin/goconvey $(GOPATH)/bin/gofumpt $(GOPATH
 
 .PHONY: deps
 deps:
-	go get .
+	@go get .
 
 .PHONY: gen-static
 gen-static: tools
-	go generate main.go
+	@go generate main.go
 
 .PHONY: check
 check: tools
-	./bin/golangci-lint run ./...
+	@./bin/golangci-lint run ./...
+	@$(GOPATH)/bin/gofumpt -w -l .
 
 .PHONY: thanks
 thanks: tools
@@ -26,11 +27,11 @@ thanks: tools
 
 .PHONY: build
 build:
-	go build .
+	@go build .
 
 .PHONY: goconvey
 goconvey: tools
-	$(GOPATH)/bin/goconvey -cover -excludedDirs bin,build,dist,doc,out,etc,vendor
+	@$(GOPATH)/bin/goconvey -cover -excludedDirs bin,build,dist,doc,out,etc,vendor
 
 .PHONY: build-linux-amd64
 build-linux-amd64:
@@ -38,20 +39,20 @@ build-linux-amd64:
 
 .PHONY: dockerize
 dockerize:
-	docker build -t ccamel/go-graphql-subscription-example .
+	@docker build -t ccamel/go-graphql-subscription-example .
 
 $(GOPATH)/bin/gofumpt:
 	@echo "📦 installing $(notdir $@)"
-	go install mvdan.cc/gofumpt@latest
+	@go install mvdan.cc/gofumpt@v0.5.0
 
 $(GOPATH)/bin/gothanks:
 	@echo "📦 installing $(notdir $@)"
-	go install github.com/psampaz/gothanks@latest
+	@go install github.com/psampaz/gothanks@latest
 
 ./bin/golangci-lint:
 	@echo "📦 installing $(notdir $@)"
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.39.0
+	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.39.0
 
 $(GOPATH)/bin/goconvey:
 	@echo "📦 installing $(notdir $@)"
-	go install github.com/smartystreets/goconvey@latest
+	@go install github.com/smartystreets/goconvey@latest
