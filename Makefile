@@ -19,6 +19,9 @@ gen-static: tools
 .PHONY: check
 check: tools
 	@./bin/golangci-lint run ./...
+
+.PHONY: format
+format: tools
 	@$(GOPATH)/bin/gofumpt -w -l .
 
 .PHONY: thanks
