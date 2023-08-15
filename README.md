@@ -20,7 +20,7 @@
 This repository implements a simple service allowing clients to consume messages from a topics/channels through a [graphQL](https://graphql.org/) subscription endpoint.
 
 <p align="center">
-  <img src="https://github.com/ccamel/go-graphql-subscription-example/raw/master/doc/overview.png" title="overview">
+  <img src="doc/overview.png" title="overview">
 </p>
 
 This particular example demonstrates how to perform basic operations such as:
