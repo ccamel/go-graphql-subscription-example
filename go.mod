@@ -8,7 +8,7 @@ require (
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/graph-gophers/graphql-go v0.0.0-20201113091052-beb923fada29
-	github.com/graph-gophers/graphql-transport-ws v0.0.0-20200904065757-c681d7e1b135
+	github.com/graph-gophers/graphql-transport-ws v0.0.2
 	github.com/justinas/alice v1.2.0
 	github.com/nsqio/go-nsq v1.1.0
 	github.com/prometheus/client_golang v1.16.0
