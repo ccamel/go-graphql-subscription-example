@@ -1,0 +1,34 @@
+name: Give thanks
+
+on:
+  workflow_call:
+  push:
+    branches: [main]
+
+jobs:
+  give-thanks-golang:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Find changed dependencies
+        id: changed-dependencies
+        uses: tj-actions/changed-files@v37.6.0
+        with:
+          files: |
+            go.mod
+
+      - name: Give thanks! (for golang projects)
+        if: |
+          steps.changed-dependencies.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch' ||
+          github.event_name == 'workflow_call'
+        run: |
+          docker run --rm \
+            -v $(pwd):/home \
+            psampaz/gothanks:v0.5.0 \
+            -y \
+            -github-token=${{ secrets.STAR_TOKEN }}
