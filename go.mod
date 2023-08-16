@@ -7,7 +7,7 @@ require (
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
-	github.com/graph-gophers/graphql-go v0.0.0-20201113091052-beb923fada29
+	github.com/graph-gophers/graphql-go v1.5.0
 	github.com/graph-gophers/graphql-transport-ws v0.0.2
 	github.com/justinas/alice v1.2.0
 	github.com/nsqio/go-nsq v1.1.0
