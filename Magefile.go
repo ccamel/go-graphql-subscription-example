@@ -21,6 +21,18 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Make linux/amd64 build (for CI and docker).
+func Linux_amd64_build() error {
+	fmt.Println("🏗️", cyan("building"), green("linux/amd64"))
+	return sh.RunWith(
+		map[string]string{
+			"CGO_ENABLED": "0",
+			"GOOS":        "linux",
+			"GOARCH":      "amd64",
+		},
+		"go", "build", ".")
+}
+
 // Build docker image for the app.
 func Docker() error {
 	image := "ccamel/go-graphql-subscription-example"
