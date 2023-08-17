@@ -21,6 +21,14 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Build the project and generate binary file.
+func Build(_ context.Context) error {
+	mg.Deps(Install_deps)
+
+	fmt.Println("🏗️", cyan("building"), green("project"))
+	return sh.Run("go", "build", ".")
+}
+
 // Install project dependencies.
 func Install_deps() error {
 	fmt.Println("🚚", cyan("installing"), green("project dependencies"))
