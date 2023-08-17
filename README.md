@@ -9,6 +9,7 @@
 [![lines-of-code](https://sonarcloud.io/api/project_badges/measure?project=ccamel_go-graphql-subscription-example&metric=ncloc)](https://sonarcloud.io/dashboard?id=ccamel_go-graphql-subscription-example)
 [![stackshare](https://img.shields.io/badge/Stackshare-%23ffffff.svg?logo=stackshare&logoColor=0690FA)](https://stackshare.io/ccamel/go-graphql-subscription-example)
 [![git3moji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
+[![magefile](https://magefile.org/badge.svg)](https://magefile.org)
 [![license](https://img.shields.io/github/license/ccamel/go-graphql-subscription-example.svg?style=flat-square)](https://github.com/ccamel/go-graphql-subscription-example/blob/master/LICENSE)
 [![fossa-status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccamel%2Fgo-graphql-subscription-example?ref=badge_shield)
 
