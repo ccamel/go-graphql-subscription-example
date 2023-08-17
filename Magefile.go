@@ -21,6 +21,13 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Build docker image for the app.
+func Docker() error {
+	image := "ccamel/go-graphql-subscription-example"
+	fmt.Println("🐳", cyan("dockerize"), green("image"), cyan(image))
+	return sh.Run("docker", "build", "-t", image, ".")
+}
+
 func installTools() {
 	mg.Deps(mg.F(installGoTool, "gofumpt", "mvdan.cc/gofumpt", "v0.5.0"))
 	mg.Deps(mg.F(installGoTool, "gothanks", "psampaz/gothanks", "latest"))
