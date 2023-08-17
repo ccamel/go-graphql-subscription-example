@@ -21,6 +21,14 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Format project code.
+func Format() error {
+	mg.Deps(installTools)
+
+	fmt.Println("📐", cyan("formatting"), green("project code"))
+	return sh.Run("gofumpt", "-w", "-l", ".")
+}
+
 // Run tests using `goconvey` tool.
 func Test() error {
 	mg.Deps(installTools)
