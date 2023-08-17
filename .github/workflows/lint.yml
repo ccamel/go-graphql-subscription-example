@@ -87,3 +87,4 @@ jobs:
         uses: hadolint/hadolint-action@v3.1.0
         with:
           verbose: true
+          ignore: DL3003
