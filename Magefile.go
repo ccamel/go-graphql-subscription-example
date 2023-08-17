@@ -94,7 +94,6 @@ func Docker() error {
 
 func installTools() {
 	mg.Deps(mg.F(installGoTool, "gofumpt", "mvdan.cc/gofumpt", "v0.5.0"))
-	mg.Deps(mg.F(installGoTool, "gothanks", "github.com/psampaz/gothanks", "v0.5.0"))
 	mg.Deps(mg.F(installGoTool, "goconvey", "github.com/smartystreets/goconvey", "v1.8.1"))
 	mg.Deps(mg.F(installGoTool, "golangci-lint", "github.com/golangci/golangci-lint/cmd/golangci-lint", "v1.54.1"))
 }
