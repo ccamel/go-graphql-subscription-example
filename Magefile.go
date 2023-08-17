@@ -21,6 +21,12 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Install project dependencies.
+func Install_deps() error {
+	fmt.Println("🚚", cyan("installing"), green("project dependencies"))
+	return sh.Run("go", "get", ".")
+}
+
 // Generate static files.
 func Static_files() error {
 	mg.Deps(installTools)
