@@ -87,17 +87,17 @@ func Docker() error {
 }
 
 func installTools() {
-	mg.Deps(mg.F(installGoTool, "gofumpt", "mvdan.cc/gofumpt", "v0.5.0"))
-	mg.Deps(mg.F(installGoTool, "gothanks", "psampaz/gothanks", "latest"))
-	mg.Deps(mg.F(installGoTool, "goconvey", "smartystreets/goconvey", "latest"))
+	mg.Deps(mg.F(installGoTool, "gofumpt", "mvdan/gofumpt", "v0.5.0"))
+	mg.Deps(mg.F(installGoTool, "gothanks", "psampaz/gothanks", "v0.5.0"))
+	mg.Deps(mg.F(installGoTool, "goconvey", "smartystreets/goconvey", "v1.8.1"))
 	mg.Deps(mg.F(installGoTool, "golangci-lint", "github.com/golangci/golangci-lint/cmd/golangci-lint", "v1.54.1"))
 }
 
-func installGoTool(name, p, version string) error {
+func installGoTool(name, pkg, version string) error {
 	if _, err := exec.LookPath(name); err == nil {
 		return nil
 	}
 
 	fmt.Println("🚚", cyan("installing"), green(name), magenta(version))
-	return sh.Run("go", "install", fmt.Sprintf("%s@%s", p, version))
+	return sh.Run("go", "install", fmt.Sprintf("%s@%s", pkg, version))
 }
