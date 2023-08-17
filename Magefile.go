@@ -21,6 +21,14 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Run tests using `goconvey` tool.
+func Test() error {
+	mg.Deps(installTools)
+
+	fmt.Println("🏗️", cyan("check"), green("project code"))
+	return sh.Run("goconvey", "-cover", "-excludedDirs", "bin,build,dist,doc,out,etc,vendor")
+}
+
 // Check project code using `golangci-lint` tool.
 func Check() error {
 	mg.Deps(installTools)
