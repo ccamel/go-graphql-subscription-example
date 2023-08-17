@@ -21,6 +21,14 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Generate static files.
+func Static_files() error {
+	mg.Deps(installTools)
+
+	fmt.Println("🖨️", cyan("generating"), green("static files"))
+	return sh.Run("go", "generate", "main.go")
+}
+
 // Format project code.
 func Format() error {
 	mg.Deps(installTools)
