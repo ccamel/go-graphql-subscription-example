@@ -21,6 +21,14 @@ var (
 	red     = color.New(color.FgRed).SprintFunc()
 )
 
+// Check project code using `golangci-lint` tool.
+func Check() error {
+	mg.Deps(installTools)
+
+	fmt.Println("🔬", cyan("check"), green("project code"))
+	return sh.Run("golangci-lint", "run", "./...")
+}
+
 // Make linux/amd64 build (for CI and docker).
 func Linux_amd64_build() error {
 	fmt.Println("🏗️", cyan("building"), green("linux/amd64"))
