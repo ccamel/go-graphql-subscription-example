@@ -27,6 +27,15 @@ const (
 	binDir = "bin"
 )
 
+var tools = map[string]struct {
+	Pkg     string
+	Version string
+}{
+	"gofumpt":       {"mvdan.cc/gofumpt", "v0.5.0"},
+	"goconvey":      {"github.com/smartystreets/goconvey", "v1.8.1"},
+	"golangci-lint": {"github.com/golangci/golangci-lint/cmd/golangci-lint", "v1.54.1"},
+}
+
 // Build the project and generate binary file.
 func Build(_ context.Context) error {
 	mg.Deps(Install_deps)
@@ -93,9 +102,9 @@ func Docker() error {
 }
 
 func installTools() {
-	mg.Deps(mg.F(installGoTool, "gofumpt", "mvdan.cc/gofumpt", "v0.5.0"))
-	mg.Deps(mg.F(installGoTool, "goconvey", "github.com/smartystreets/goconvey", "v1.8.1"))
-	mg.Deps(mg.F(installGoTool, "golangci-lint", "github.com/golangci/golangci-lint/cmd/golangci-lint", "v1.54.1"))
+	for name, tool := range tools {
+		mg.Deps(mg.F(installGoTool, name, tool.Pkg, tool.Version))
+	}
 }
 
 func installGoTool(name, pkg, version string) error {
@@ -116,9 +125,6 @@ func installGoTool(name, pkg, version string) error {
 }
 
 func toolExists(name string) bool {
-	toolPath := filepath.Join(binDir, name)
-	if _, err := os.Stat(toolPath); os.IsNotExist(err) {
-		return false
-	}
-	return true
+	_, err := os.Stat(filepath.Join(binDir, name))
+	return !os.IsNotExist(err)
 }
