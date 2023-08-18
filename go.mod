@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/antonmedv/expr v1.14.0
-	github.com/fatih/color v1.13.0
+	github.com/fatih/color v1.15.0
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/graph-gophers/graphql-go v1.5.0
