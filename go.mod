@@ -19,6 +19,6 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/segmentio/kafka-go v0.4.44
 	github.com/smartystreets/goconvey v1.8.1
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 	github.com/urfave/cli v1.22.1 // indirect
 )
