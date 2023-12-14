@@ -1,11 +1,11 @@
 repo_name: ccamel/go-graphql-subscription-example
-report_id: 02d4307589e67632b183115c0ca46f37
+report_id: a54e9b819d7007f2c2fe402f5613a828
 repo_type: Public
-timestamp: '2023-11-13T07:39:21+00:00'
+timestamp: '2023-12-14T10:34:45+00:00'
 requested_by: dependabot[bot]
 provider: github
 branch: main
-detected_tools_count: 8
+detected_tools_count: 21
 tools:
 - name: Golang
   description: An open source programming language that makes it easy to build simple,
@@ -68,7 +68,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
-  detection_source: ".github/workflows/lint.yml"
+  detection_source: ".github/workflows/auto-merge.yml"
   last_updated_by: ccamel
   last_updated_on: 2023-08-15 16:24:56.000000000 Z
 - name: Zookeeper
@@ -82,13 +82,194 @@ tools:
   detection_source: docker-compose.yml
   last_updated_by: ccamel
   last_updated_on: 2023-08-15 16:29:54.000000000 Z
-- name: Shell
-  description: A shell is a text-based terminal, used for manipulating programs and
-    files. Shell scripts typically manage program execution.
-  website_url: https://en.wikipedia.org/wiki/Shell_script
+- name: HTML
+  description: Hypertext Markup Language for creating web pages.
+  website_url: http://
   open_source: false
   hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Languages
-  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
-  detection_source: Repo Metadata
+  image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source: static/graphiql/graphiql.html
+  last_updated_by: Chris Camel
+  last_updated_on: 2019-04-14 07:12:28.000000000 Z
+- name: alice
+  description: Painless middleware chaining for Go
+  package_url: https://pkg.go.dev/github.com/justinas/alice
+  version: 1.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: Renovate Bot
+  last_updated_on: 2019-11-05 15:39:27.000000000 Z
+- name: cobra
+  description: A Commander for modern Go CLI interactions
+  package_url: https://pkg.go.dev/github.com/spf13/cobra
+  version: 1.2.1
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-11-06 13:03:13.000000000 Z
+- name: color
+  description: Color package for Go
+  package_url: https://pkg.go.dev/github.com/fatih/color
+  version: 1.7.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-11-06 13:07:11.000000000 Z
+- name: go-nsq
+  description: The official Go package for NSQ
+  package_url: https://pkg.go.dev/github.com/nsqio/go-nsq
+  version: 1.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2021-11-13 08:23:48.000000000 Z
+- name: go.uuid
+  description: UUID package for Go
+  package_url: https://pkg.go.dev/github.com/satori/go.uuid
+  version: 1.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: ccamel
+  last_updated_on: 2019-04-19 21:13:10.000000000 Z
+- name: goconvey
+  description: Go testing in the browser
+  package_url: https://pkg.go.dev/github.com/smartystreets/goconvey
+  version: 1.6.4
+  license: Other
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-08-15 21:05:06.000000000 Z
+- name: graphql-go
+  description: GraphQL server with a focus on ease of use
+  package_url: https://pkg.go.dev/github.com/graph-gophers/graphql-go
+  version: 1.5.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-08-16 08:53:23.000000000 Z
+- name: kafka-go
+  description: Kafka library in Go
+  package_url: https://pkg.go.dev/github.com/segmentio/kafka-go
+  version: 0.4.46
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-11-28 13:01:59.000000000 Z
+- name: mage
+  description: A Make/rake-like build tool using Go
+  package_url: https://pkg.go.dev/github.com/magefile/mage
+  version: 1.15.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: ccamel
+  last_updated_on: 2023-08-17 17:47:46.000000000 Z
+- name: snappy
+  description: The Snappy compression format in the Go programming language
+  package_url: https://pkg.go.dev/github.com/golang/snappy
+  version: 0.0.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-08-15 21:01:49.000000000 Z
+- name: urfave/cli
+  description: A simple
+  package_url: https://pkg.go.dev/github.com/urfave/cli
+  version: 1.20.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-09-27 13:24:39.000000000 Z
+- name: websocket
+  description: A fast
+  package_url: https://pkg.go.dev/github.com/gorilla/websocket
+  version: 1.4.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2021-07-02 13:14:19.000000000 Z
+- name: zerolog
+  description: Zero Allocation JSON Logger
+  package_url: https://pkg.go.dev/github.com/rs/zerolog
+  version: 1.31.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.sum
+  detection_source: go.mod
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-09-25 13:04:43.000000000 Z
