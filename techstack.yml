@@ -1,7 +1,8 @@
 repo_name: ccamel/go-graphql-subscription-example
-report_id: a54e9b819d7007f2c2fe402f5613a828
+report_id: 02d4307589e67632b183115c0ca46f37
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T10:34:45+00:00'
+timestamp: '2024-01-05T08:46:36+00:00'
 requested_by: dependabot[bot]
 provider: github
 branch: main
@@ -17,6 +18,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1005/O6AczwfV_400x400.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example
   detection_source: Repo Metadata
 - name: GraphQL
   description: A data query language and runtime
@@ -26,6 +28,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Query Languages
   image_url: https://img.stackshare.io/service/3820/12972006.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/go.mod
   detection_source: go.mod
   last_updated_by: dependabot[bot]
   last_updated_on: 2023-08-16 08:53:23.000000000 Z
@@ -38,6 +41,7 @@ tools:
   category: Data Stores
   sub_category: Message Queue
   image_url: https://img.stackshare.io/service/1063/kazUJooF_400x400.jpg
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/docker-compose.yml
   detection_source: docker-compose.yml
   last_updated_by: ccamel
   last_updated_on: 2023-08-15 16:29:54.000000000 Z
@@ -50,6 +54,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Virtual Machine Platforms & Containers
   image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -59,6 +64,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -68,6 +74,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/.github/workflows/auto-merge.yml
   detection_source: ".github/workflows/auto-merge.yml"
   last_updated_by: ccamel
   last_updated_on: 2023-08-15 16:24:56.000000000 Z
@@ -79,6 +86,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Open Source Service Discovery
   image_url: https://img.stackshare.io/service/1528/apache-zookeeper.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/docker-compose.yml
   detection_source: docker-compose.yml
   last_updated_by: ccamel
   last_updated_on: 2023-08-15 16:29:54.000000000 Z
@@ -88,6 +96,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source_url: https://github.com/ccamel/go-graphql-subscription-example/blob/main/static/graphiql/graphiql.html
   detection_source: static/graphiql/graphiql.html
   last_updated_by: Chris Camel
   last_updated_on: 2019-04-14 07:12:28.000000000 Z
