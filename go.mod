@@ -11,7 +11,7 @@ require (
 	github.com/justinas/alice v1.2.0
 	github.com/magefile/mage v1.15.0
 	github.com/nsqio/go-nsq v1.1.0
-	github.com/prometheus/client_golang v1.18.0
+	github.com/prometheus/client_golang v1.19.0
 	github.com/reactivex/rxgo/v2 v2.5.0
 	github.com/robinjoseph08/redisqueue/v2 v2.1.0
 	github.com/rs/zerolog v1.32.0
