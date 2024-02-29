@@ -4,11 +4,11 @@
 ccamel/go-graphql-subscription-example is built on the following main stack:
 
 - [Golang](http://golang.org/) – Languages
-- [Kafka](http://kafka.apache.org/) – Message Queue
-- [Zookeeper](http://zookeeper.apache.org/) – Open Source Service Discovery
 - [GraphQL](http://graphql.org/) – Query Languages
-- [GitHub Actions](https://github.com/features/actions) – Continuous Integration
+- [Kafka](http://kafka.apache.org/) – Message Queue
 - [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- [GitHub Actions](https://github.com/features/actions) – Continuous Integration
+- [Zookeeper](http://zookeeper.apache.org/) – Open Source Service Discovery
 
 Full tech stack [here](/techstack.md)
 
@@ -19,11 +19,11 @@ Full tech stack [here](/techstack.md)
 ccamel/go-graphql-subscription-example is built on the following main stack:
 
 - <img width='25' height='25' src='https://img.stackshare.io/service/1005/O6AczwfV_400x400.png' alt='Golang'/> [Golang](http://golang.org/) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/1063/kazUJooF_400x400.jpg' alt='Kafka'/> [Kafka](http://kafka.apache.org/) – Message Queue
-- <img width='25' height='25' src='https://img.stackshare.io/service/1528/apache-zookeeper.png' alt='Zookeeper'/> [Zookeeper](http://zookeeper.apache.org/) – Open Source Service Discovery
 - <img width='25' height='25' src='https://img.stackshare.io/service/3820/12972006.png' alt='GraphQL'/> [GraphQL](http://graphql.org/) – Query Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/11563/actions.png' alt='GitHub Actions'/> [GitHub Actions](https://github.com/features/actions) – Continuous Integration
+- <img width='25' height='25' src='https://img.stackshare.io/service/1063/kazUJooF_400x400.jpg' alt='Kafka'/> [Kafka](http://kafka.apache.org/) – Message Queue
 - <img width='25' height='25' src='https://img.stackshare.io/service/586/n4u37v9t_400x400.png' alt='Docker'/> [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- <img width='25' height='25' src='https://img.stackshare.io/service/11563/actions.png' alt='GitHub Actions'/> [GitHub Actions](https://github.com/features/actions) – Continuous Integration
+- <img width='25' height='25' src='https://img.stackshare.io/service/1528/apache-zookeeper.png' alt='Zookeeper'/> [Zookeeper](http://zookeeper.apache.org/) – Open Source Service Discovery
 
 Full tech stack [here](/techstack.md)
 
@@ -34,7 +34,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [ccamel/go-graphql-subscription-example](https://github.com/ccamel/go-graphql-subscription-example)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|21<br/>Tools used|01/05/24 <br/>Report generated|
+|21<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 
