@@ -1,5 +1,5 @@
 # Stage build
-FROM golang:1.25.6 as builder
+FROM golang:1.26.0 as builder
 
 WORKDIR /tmp
 
